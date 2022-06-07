@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeeplayTestApp", "DeeplayTestApp\DeeplayTestApp.csproj", "{46A428A1-0383-49E2-A9A1-4CB352BFB382}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46A428A1-0383-49E2-A9A1-4CB352BFB382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A428A1-0383-49E2-A9A1-4CB352BFB382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A428A1-0383-49E2-A9A1-4CB352BFB382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A428A1-0383-49E2-A9A1-4CB352BFB382}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D478B88-6D17-4EA2-82D0-59350E281E96}
+	EndGlobalSection
+EndGlobal
