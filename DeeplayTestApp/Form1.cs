@@ -23,5 +23,30 @@ namespace DeeplayTestApp
             this.employeesTableAdapter.Fill(this.employeesDataSet1.Employees);
 
         }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            AddForm addForm = new AddForm();
+            addForm.Owner = this;
+            addForm.ShowDialog();
+        }
+
+        private void ChangeButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Удалить запись?", 
+                                              "Удаление", 
+                                              MessageBoxButtons.OKCancel, 
+                                              MessageBoxIcon.Warning, 
+                                              MessageBoxDefaultButton.Button2);
+            if (dr == DialogResult.OK)
+            {
+                // Добавить удаление
+            }
+        }
     }
 }
