@@ -20,9 +20,9 @@ namespace DeeplayTestApp {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("employeesDataSet1")]
+    [global::System.Xml.Serialization.XmlRootAttribute("employeesDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class employeesDataSet1 : global::System.Data.DataSet {
+    public partial class employeesDataSet : global::System.Data.DataSet {
         
         private EmployeesDataTable tableEmployees;
         
@@ -30,7 +30,7 @@ namespace DeeplayTestApp {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public employeesDataSet1() {
+        public employeesDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace DeeplayTestApp {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected employeesDataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected employeesDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace DeeplayTestApp {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            employeesDataSet1 cln = ((employeesDataSet1)(base.Clone()));
+            employeesDataSet cln = ((employeesDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace DeeplayTestApp {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "employeesDataSet1";
+            this.DataSetName = "employeesDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/employeesDataSet1.xsd";
+            this.Namespace = "http://tempuri.org/employeesDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableEmployees = new EmployeesDataTable();
@@ -225,7 +225,7 @@ namespace DeeplayTestApp {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            employeesDataSet1 ds = new employeesDataSet1();
+            employeesDataSet ds = new employeesDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -290,6 +290,8 @@ namespace DeeplayTestApp {
             private global::System.Data.DataColumn columnJobTitle;
             
             private global::System.Data.DataColumn columnAdditionalInformation;
+            
+            private global::System.Data.DataColumn columnSubdivision;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -374,6 +376,14 @@ namespace DeeplayTestApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SubdivisionColumn {
+                get {
+                    return this.columnSubdivision;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -409,7 +419,7 @@ namespace DeeplayTestApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EmployeesRow AddEmployeesRow(int Id, string Name, System.DateTime Birthday, string Sex, string JobTitle, string AdditionalInformation) {
+            public EmployeesRow AddEmployeesRow(int Id, string Name, System.DateTime Birthday, string Sex, string JobTitle, string AdditionalInformation, string Subdivision) {
                 EmployeesRow rowEmployeesRow = ((EmployeesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -417,7 +427,8 @@ namespace DeeplayTestApp {
                         Birthday,
                         Sex,
                         JobTitle,
-                        AdditionalInformation};
+                        AdditionalInformation,
+                        Subdivision};
                 rowEmployeesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEmployeesRow);
                 return rowEmployeesRow;
@@ -453,6 +464,7 @@ namespace DeeplayTestApp {
                 this.columnSex = base.Columns["Sex"];
                 this.columnJobTitle = base.Columns["JobTitle"];
                 this.columnAdditionalInformation = base.Columns["AdditionalInformation"];
+                this.columnSubdivision = base.Columns["Subdivision"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -470,6 +482,8 @@ namespace DeeplayTestApp {
                 base.Columns.Add(this.columnJobTitle);
                 this.columnAdditionalInformation = new global::System.Data.DataColumn("AdditionalInformation", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAdditionalInformation);
+                this.columnSubdivision = new global::System.Data.DataColumn("Subdivision", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSubdivision);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AllowDBNull = false;
@@ -481,7 +495,10 @@ namespace DeeplayTestApp {
                 this.columnSex.MaxLength = 1;
                 this.columnJobTitle.AllowDBNull = false;
                 this.columnJobTitle.MaxLength = 30;
-                this.columnAdditionalInformation.MaxLength = 10;
+                this.columnAdditionalInformation.AllowDBNull = false;
+                this.columnAdditionalInformation.MaxLength = 50;
+                this.columnSubdivision.AllowDBNull = false;
+                this.columnSubdivision.MaxLength = 30;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -549,7 +566,7 @@ namespace DeeplayTestApp {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                employeesDataSet1 ds = new employeesDataSet1();
+                employeesDataSet ds = new employeesDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -681,12 +698,7 @@ namespace DeeplayTestApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string AdditionalInformation {
                 get {
-                    try {
-                        return ((string)(this[this.tableEmployees.AdditionalInformationColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'AdditionalInformation\' в таблице \'Employees\' равно DBNull.", e);
-                    }
+                    return ((string)(this[this.tableEmployees.AdditionalInformationColumn]));
                 }
                 set {
                     this[this.tableEmployees.AdditionalInformationColumn] = value;
@@ -695,14 +707,13 @@ namespace DeeplayTestApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsAdditionalInformationNull() {
-                return this.IsNull(this.tableEmployees.AdditionalInformationColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetAdditionalInformationNull() {
-                this[this.tableEmployees.AdditionalInformationColumn] = global::System.Convert.DBNull;
+            public string Subdivision {
+                get {
+                    return ((string)(this[this.tableEmployees.SubdivisionColumn]));
+                }
+                set {
+                    this[this.tableEmployees.SubdivisionColumn] = value;
+                }
             }
         }
         
@@ -741,7 +752,7 @@ namespace DeeplayTestApp {
         }
     }
 }
-namespace DeeplayTestApp.employeesDataSet1TableAdapters {
+namespace DeeplayTestApp.employeesDataSetTableAdapters {
     
     
     /// <summary>
@@ -871,22 +882,23 @@ namespace DeeplayTestApp.employeesDataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("Sex", "Sex");
             tableMapping.ColumnMappings.Add("JobTitle", "JobTitle");
             tableMapping.ColumnMappings.Add("AdditionalInformation", "AdditionalInformation");
+            tableMapping.ColumnMappings.Add("Subdivision", "Subdivision");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Employees] WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([Birthday] = @Original_Birthday) AND ([Sex] = @Original_Sex) AND ([JobTitle] = @Original_JobTitle) AND ((@IsNull_AdditionalInformation = 1 AND [AdditionalInformation] IS NULL) OR ([AdditionalInformation] = @Original_AdditionalInformation)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Employees] WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([Birthday] = @Original_Birthday) AND ([Sex] = @Original_Sex) AND ([JobTitle] = @Original_JobTitle) AND ([AdditionalInformation] = @Original_AdditionalInformation) AND ([Subdivision] = @Original_Subdivision))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Birthday", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthday", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Sex", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JobTitle", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobTitle", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AdditionalInformation", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdditionalInformation", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdditionalInformation", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdditionalInformation", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Subdivision", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Subdivision", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Employees] ([Id], [Name], [Birthday], [Sex], [JobTitle], [AdditionalInformation]) VALUES (@Id, @Name, @Birthday, @Sex, @JobTitle, @AdditionalInformation);
-SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Employees] ([Id], [Name], [Birthday], [Sex], [JobTitle], [AdditionalInformation], [Subdivision]) VALUES (@Id, @Name, @Birthday, @Sex, @JobTitle, @AdditionalInformation, @Subdivision);
+SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FROM Employees WHERE (Id = @Id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -894,10 +906,11 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sex", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JobTitle", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobTitle", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdditionalInformation", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdditionalInformation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Subdivision", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Subdivision", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Employees] SET [Id] = @Id, [Name] = @Name, [Birthday] = @Birthday, [Sex] = @Sex, [JobTitle] = @JobTitle, [AdditionalInformation] = @AdditionalInformation WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([Birthday] = @Original_Birthday) AND ([Sex] = @Original_Sex) AND ([JobTitle] = @Original_JobTitle) AND ((@IsNull_AdditionalInformation = 1 AND [AdditionalInformation] IS NULL) OR ([AdditionalInformation] = @Original_AdditionalInformation)));
-SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Employees] SET [Id] = @Id, [Name] = @Name, [Birthday] = @Birthday, [Sex] = @Sex, [JobTitle] = @JobTitle, [AdditionalInformation] = @AdditionalInformation, [Subdivision] = @Subdivision WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([Birthday] = @Original_Birthday) AND ([Sex] = @Original_Sex) AND ([JobTitle] = @Original_JobTitle) AND ([AdditionalInformation] = @Original_AdditionalInformation) AND ([Subdivision] = @Original_Subdivision));
+SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FROM Employees WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -905,13 +918,14 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sex", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JobTitle", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobTitle", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdditionalInformation", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdditionalInformation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Subdivision", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Subdivision", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Birthday", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthday", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Sex", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JobTitle", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobTitle", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AdditionalInformation", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdditionalInformation", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdditionalInformation", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdditionalInformation", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Subdivision", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Subdivision", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -927,8 +941,8 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM dbo.Employee" +
-                "s";
+            this._commandCollection[0].CommandText = "SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FROM" +
+                " dbo.Employees";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -936,7 +950,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(employeesDataSet1.EmployeesDataTable dataTable) {
+        public virtual int Fill(employeesDataSet.EmployeesDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -949,9 +963,9 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual employeesDataSet1.EmployeesDataTable GetData() {
+        public virtual employeesDataSet.EmployeesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            employeesDataSet1.EmployeesDataTable dataTable = new employeesDataSet1.EmployeesDataTable();
+            employeesDataSet.EmployeesDataTable dataTable = new employeesDataSet.EmployeesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -959,14 +973,14 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(employeesDataSet1.EmployeesDataTable dataTable) {
+        public virtual int Update(employeesDataSet.EmployeesDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(employeesDataSet1 dataSet) {
+        public virtual int Update(employeesDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Employees");
         }
         
@@ -989,7 +1003,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_Name, System.DateTime Original_Birthday, string Original_Sex, string Original_JobTitle, string Original_AdditionalInformation) {
+        public virtual int Delete(int Original_Id, string Original_Name, System.DateTime Original_Birthday, string Original_Sex, string Original_JobTitle, string Original_AdditionalInformation, string Original_Subdivision) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
@@ -1011,12 +1025,16 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_JobTitle));
             }
             if ((Original_AdditionalInformation == null)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_AdditionalInformation");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_AdditionalInformation));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_AdditionalInformation));
+            }
+            if ((Original_Subdivision == null)) {
+                throw new global::System.ArgumentNullException("Original_Subdivision");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Subdivision));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1038,7 +1056,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Id, string Name, System.DateTime Birthday, string Sex, string JobTitle, string AdditionalInformation) {
+        public virtual int Insert(int Id, string Name, System.DateTime Birthday, string Sex, string JobTitle, string AdditionalInformation, string Subdivision) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -1060,10 +1078,16 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(JobTitle));
             }
             if ((AdditionalInformation == null)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("AdditionalInformation");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = ((string)(AdditionalInformation));
+            }
+            if ((Subdivision == null)) {
+                throw new global::System.ArgumentNullException("Subdivision");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Subdivision));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1085,7 +1109,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Id, string Name, System.DateTime Birthday, string Sex, string JobTitle, string AdditionalInformation, int Original_Id, string Original_Name, System.DateTime Original_Birthday, string Original_Sex, string Original_JobTitle, string Original_AdditionalInformation) {
+        public virtual int Update(int Id, string Name, System.DateTime Birthday, string Sex, string JobTitle, string AdditionalInformation, string Subdivision, int Original_Id, string Original_Name, System.DateTime Original_Birthday, string Original_Sex, string Original_JobTitle, string Original_AdditionalInformation, string Original_Subdivision) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -1107,38 +1131,48 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(JobTitle));
             }
             if ((AdditionalInformation == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("AdditionalInformation");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(AdditionalInformation));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Id));
+            if ((Subdivision == null)) {
+                throw new global::System.ArgumentNullException("Subdivision");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Subdivision));
+            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Id));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Name));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_Birthday));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_Birthday));
             if ((Original_Sex == null)) {
                 throw new global::System.ArgumentNullException("Original_Sex");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Sex));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Sex));
             }
             if ((Original_JobTitle == null)) {
                 throw new global::System.ArgumentNullException("Original_JobTitle");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_JobTitle));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_JobTitle));
             }
             if ((Original_AdditionalInformation == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_AdditionalInformation");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_AdditionalInformation));
+            }
+            if ((Original_Subdivision == null)) {
+                throw new global::System.ArgumentNullException("Original_Subdivision");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Subdivision));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1160,8 +1194,8 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, System.DateTime Birthday, string Sex, string JobTitle, string AdditionalInformation, int Original_Id, string Original_Name, System.DateTime Original_Birthday, string Original_Sex, string Original_JobTitle, string Original_AdditionalInformation) {
-            return this.Update(Original_Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Original_Id, Original_Name, Original_Birthday, Original_Sex, Original_JobTitle, Original_AdditionalInformation);
+        public virtual int Update(string Name, System.DateTime Birthday, string Sex, string JobTitle, string AdditionalInformation, string Subdivision, int Original_Id, string Original_Name, System.DateTime Original_Birthday, string Original_Sex, string Original_JobTitle, string Original_AdditionalInformation, string Original_Subdivision) {
+            return this.Update(Original_Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision, Original_Id, Original_Name, Original_Birthday, Original_Sex, Original_JobTitle, Original_AdditionalInformation, Original_Subdivision);
         }
     }
     
@@ -1256,7 +1290,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(employeesDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(employeesDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._employeesTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Employees.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -1275,7 +1309,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(employeesDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(employeesDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._employeesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Employees.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -1293,7 +1327,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(employeesDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(employeesDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._employeesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Employees.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -1335,7 +1369,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation FROM Employees W
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(employeesDataSet1 dataSet) {
+        public virtual int UpdateAll(employeesDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

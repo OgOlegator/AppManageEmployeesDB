@@ -19,8 +19,10 @@ namespace DeeplayTestApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeesDataSet.Employees". При необходимости она может быть перемещена или удалена.
+            this.employeesTableAdapter.Fill(this.employeesDataSet.Employees);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeesDataSet1.Employees". При необходимости она может быть перемещена или удалена.
-            this.employeesTableAdapter.Fill(this.employeesDataSet1.Employees);
+            this.employeesTableAdapter.Fill(this.employeesDataSet.Employees);
 
         }
 

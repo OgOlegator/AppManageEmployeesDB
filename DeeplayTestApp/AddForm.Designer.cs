@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBoxBirthday = new System.Windows.Forms.TextBox();
-            this.textBoxSex = new System.Windows.Forms.TextBox();
-            this.textBoxJobTitle = new System.Windows.Forms.TextBox();
-            this.textBoxInformation = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxSubdivision = new System.Windows.Forms.TextBox();
+            this.textBoxBirthday = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
+            this.comboBoxJobTitle = new System.Windows.Forms.ComboBox();
+            this.comboBoxSex = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,14 +50,14 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.comboBoxSex);
+            this.groupBox1.Controls.Add(this.comboBoxJobTitle);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBoxInformation);
-            this.groupBox1.Controls.Add(this.textBoxJobTitle);
-            this.groupBox1.Controls.Add(this.textBoxSex);
+            this.groupBox1.Controls.Add(this.textBoxSubdivision);
             this.groupBox1.Controls.Add(this.textBoxBirthday);
             this.groupBox1.Controls.Add(this.textBoxName);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -68,16 +68,67 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Добавить сотрудника";
             // 
-            // textBoxName
+            // label5
             // 
-            this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(6, 184);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(158, 20);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Подразделение";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(6, 146);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(112, 20);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Должность";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(6, 113);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Пол";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(6, 80);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(154, 20);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Дата рождения";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(6, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "ФИО";
+            // 
+            // textBoxSubdivision
+            // 
+            this.textBoxSubdivision.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxName.Location = new System.Drawing.Point(186, 47);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(433, 27);
-            this.textBoxName.TabIndex = 0;
+            this.textBoxSubdivision.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxSubdivision.Location = new System.Drawing.Point(186, 184);
+            this.textBoxSubdivision.MaxLength = 50;
+            this.textBoxSubdivision.Name = "textBoxSubdivision";
+            this.textBoxSubdivision.Size = new System.Drawing.Size(433, 27);
+            this.textBoxSubdivision.TabIndex = 4;
             // 
             // textBoxBirthday
             // 
@@ -90,88 +141,17 @@
             this.textBoxBirthday.Size = new System.Drawing.Size(433, 27);
             this.textBoxBirthday.TabIndex = 1;
             // 
-            // textBoxSex
+            // textBoxName
             // 
-            this.textBoxSex.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSex.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSex.Location = new System.Drawing.Point(186, 113);
-            this.textBoxSex.Name = "textBoxSex";
-            this.textBoxSex.Size = new System.Drawing.Size(433, 27);
-            this.textBoxSex.TabIndex = 2;
-            // 
-            // textBoxJobTitle
-            // 
-            this.textBoxJobTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxJobTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxJobTitle.Location = new System.Drawing.Point(186, 146);
-            this.textBoxJobTitle.Name = "textBoxJobTitle";
-            this.textBoxJobTitle.Size = new System.Drawing.Size(433, 27);
-            this.textBoxJobTitle.TabIndex = 3;
-            // 
-            // textBoxInformation
-            // 
-            this.textBoxInformation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxInformation.Location = new System.Drawing.Point(186, 184);
-            this.textBoxInformation.Name = "textBoxInformation";
-            this.textBoxInformation.Size = new System.Drawing.Size(433, 27);
-            this.textBoxInformation.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(6, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 20);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "ФИО";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(6, 80);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(154, 20);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Дата рождения";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(6, 113);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 20);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Пол";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(6, 146);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 20);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Должность";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(6, 184);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(174, 20);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Доп. информация";
+            this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxName.Location = new System.Drawing.Point(186, 47);
+            this.textBoxName.MaxLength = 50;
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(433, 27);
+            this.textBoxName.TabIndex = 0;
             // 
             // SaveButton
             // 
@@ -197,6 +177,36 @@
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
+            // comboBoxJobTitle
+            // 
+            this.comboBoxJobTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxJobTitle.FormattingEnabled = true;
+            this.comboBoxJobTitle.Items.AddRange(new object[] {
+            "Директор",
+            "Руководитель",
+            "Контролер",
+            "Рабочий"});
+            this.comboBoxJobTitle.Location = new System.Drawing.Point(186, 146);
+            this.comboBoxJobTitle.Name = "comboBoxJobTitle";
+            this.comboBoxJobTitle.Size = new System.Drawing.Size(433, 28);
+            this.comboBoxJobTitle.TabIndex = 3;
+            // 
+            // comboBoxSex
+            // 
+            this.comboBoxSex.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSex.FormattingEnabled = true;
+            this.comboBoxSex.Items.AddRange(new object[] {
+            "М",
+            "Ж"});
+            this.comboBoxSex.Location = new System.Drawing.Point(187, 114);
+            this.comboBoxSex.Name = "comboBoxSex";
+            this.comboBoxSex.Size = new System.Drawing.Size(432, 28);
+            this.comboBoxSex.TabIndex = 10;
+            // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -221,13 +231,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxInformation;
-        private System.Windows.Forms.TextBox textBoxJobTitle;
-        private System.Windows.Forms.TextBox textBoxSex;
+        private System.Windows.Forms.TextBox textBoxSubdivision;
         private System.Windows.Forms.TextBox textBoxBirthday;
         private System.Windows.Forms.TextBox textBoxName;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.ComboBox comboBoxSex;
+        private System.Windows.Forms.ComboBox comboBoxJobTitle;
     }
 }

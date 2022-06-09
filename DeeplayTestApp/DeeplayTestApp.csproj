@@ -67,10 +67,13 @@
     <Compile Include="AddForm.Designer.cs">
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="employeesDataSet1.Designer.cs">
+    <Compile Include="employeesDataSet.cs">
+      <DependentUpon>employeesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="employeesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>employeesDataSet1.xsd</DependentUpon>
+      <DependentUpon>employeesDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -95,16 +98,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="employeesDataSet1.xsc">
-      <DependentUpon>employeesDataSet1.xsd</DependentUpon>
+    <None Include="employeesDataSet.xsc">
+      <DependentUpon>employeesDataSet.xsd</DependentUpon>
     </None>
-    <None Include="employeesDataSet1.xsd">
+    <None Include="employeesDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>employeesDataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>employeesDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="employeesDataSet1.xss">
-      <DependentUpon>employeesDataSet1.xsd</DependentUpon>
+    <None Include="employeesDataSet.xss">
+      <DependentUpon>employeesDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

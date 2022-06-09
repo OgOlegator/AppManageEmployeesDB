@@ -22,23 +22,43 @@ namespace DeeplayTestApp
             Form1 main = Owner as Form1;
             if (main != null)
             {
-                DataRow newRow = main.employeesDataSet1.Tables[0].NewRow();
-                int rc = main.dataGridView1.RowCount + 1;
-                newRow[0] = rc;
+                DataRow newRow = main.employeesDataSet.Employees.NewRow();
+
+                int id;
+                try
+                {
+                    id = main.employeesDataSet.Employees.Max(x => x.Id) + 1;
+                }
+                catch
+                {
+                    id = 1;
+                }
+
+                newRow[0] = id;
                 newRow[1] = textBoxName.Text;
                 newRow[2] = textBoxBirthday.Text;
-                newRow[3] = textBoxSex.Text;
-                newRow[4] = textBoxJobTitle.Text;
-                newRow[5] = textBoxInformation.Text;
-                main.employeesDataSet1.Tables[0].Rows.Add(newRow);
-                main.employeesTableAdapter.Update(main.employeesDataSet1.Employees);
-                main.employeesDataSet1.Tables[0].AcceptChanges();
+                newRow[3] = comboBoxSex.Text;
+                newRow[4] = comboBoxJobTitle.Text;
+
+                if (comboBoxJobTitle.Text == "Руководитель")
+                    newRow[5] = textBoxSubdivision.Text;
+                else
+                {
+                    newRow[5] = textBoxSubdivision.Text;
+                    //newRow[5] = main.employeesDataSet.Employees.
+                    //    Where(x => x.AdditionalInformation == textBoxSubdivision.Text).Select(x => x.Name);
+                }
+                newRow[6] = textBoxSubdivision.Text;
+
+                main.employeesDataSet.Employees.Rows.Add(newRow);
+                main.employeesTableAdapter.Update(main.employeesDataSet);
+                main.employeesDataSet.Employees.AcceptChanges(); 
                 main.dataGridView1.Refresh();
                 textBoxName.Text = "";
                 textBoxBirthday.Text = "";
-                textBoxSex.Text = "";
-                textBoxJobTitle.Text = "";
-                textBoxInformation.Text = "";
+                comboBoxSex.Text = "";
+                comboBoxJobTitle.Text = "";
+                textBoxSubdivision.Text = "";
             }
         }
 
