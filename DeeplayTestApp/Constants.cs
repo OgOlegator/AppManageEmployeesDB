@@ -12,5 +12,8 @@ namespace DeeplayTestApp
         public const string Supervisor = "Руководитель";
         public const string Controller = "Контролер";
         public const string Worker = "Рабочий";
+
+        public const string ModeUpdate = "Update row";
+        public const string ModeAdd = "Add row";
     }
 }
