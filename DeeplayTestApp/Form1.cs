@@ -35,19 +35,31 @@ namespace DeeplayTestApp
 
         private void ChangeButton_Click(object sender, EventArgs e)
         {
-
+            AddForm addForm = new AddForm();
+            addForm.Owner = this;
+            addForm.ShowDialog();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Удалить запись?", 
-                                              "Удаление", 
-                                              MessageBoxButtons.OKCancel, 
-                                              MessageBoxIcon.Warning, 
+            //Фактически будет только 1 строка так как свойство MultiSelect для DataGridView отключено
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            { 
+                dataGridView1_UserDeletingRow(sender, new DataGridViewRowCancelEventArgs(row));
+                dataGridView1.Rows.Remove(row);
+            }
+        }
+
+        private void dataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Удалить запись?",
+                                              "Удаление",
+                                              MessageBoxButtons.OKCancel,
+                                              MessageBoxIcon.Warning,
                                               MessageBoxDefaultButton.Button2);
-            if (dr == DialogResult.OK)
+            if (dr == DialogResult.Cancel)
             {
-                // Добавить удаление
+                e.Cancel = true;
             }
         }
     }

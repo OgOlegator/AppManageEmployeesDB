@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBoxSex = new System.Windows.Forms.ComboBox();
+            this.comboBoxJobTitle = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,8 +42,6 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
-            this.comboBoxJobTitle = new System.Windows.Forms.ComboBox();
-            this.comboBoxSex = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +67,36 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Добавить сотрудника";
+            // 
+            // comboBoxSex
+            // 
+            this.comboBoxSex.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSex.FormattingEnabled = true;
+            this.comboBoxSex.Items.AddRange(new object[] {
+            "М",
+            "Ж"});
+            this.comboBoxSex.Location = new System.Drawing.Point(187, 114);
+            this.comboBoxSex.Name = "comboBoxSex";
+            this.comboBoxSex.Size = new System.Drawing.Size(432, 28);
+            this.comboBoxSex.TabIndex = 10;
+            // 
+            // comboBoxJobTitle
+            // 
+            this.comboBoxJobTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxJobTitle.FormattingEnabled = true;
+            this.comboBoxJobTitle.Items.AddRange(new object[] {
+            "Директор",
+            "Руководитель",
+            "Контролер",
+            "Рабочий"});
+            this.comboBoxJobTitle.Location = new System.Drawing.Point(186, 146);
+            this.comboBoxJobTitle.Name = "comboBoxJobTitle";
+            this.comboBoxJobTitle.Size = new System.Drawing.Size(433, 28);
+            this.comboBoxJobTitle.TabIndex = 3;
             // 
             // label5
             // 
@@ -176,36 +206,6 @@
             this.CloseButton.Text = "Закрыть";
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
-            // 
-            // comboBoxJobTitle
-            // 
-            this.comboBoxJobTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxJobTitle.FormattingEnabled = true;
-            this.comboBoxJobTitle.Items.AddRange(new object[] {
-            "Директор",
-            "Руководитель",
-            "Контролер",
-            "Рабочий"});
-            this.comboBoxJobTitle.Location = new System.Drawing.Point(186, 146);
-            this.comboBoxJobTitle.Name = "comboBoxJobTitle";
-            this.comboBoxJobTitle.Size = new System.Drawing.Size(433, 28);
-            this.comboBoxJobTitle.TabIndex = 3;
-            // 
-            // comboBoxSex
-            // 
-            this.comboBoxSex.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxSex.FormattingEnabled = true;
-            this.comboBoxSex.Items.AddRange(new object[] {
-            "М",
-            "Ж"});
-            this.comboBoxSex.Location = new System.Drawing.Point(187, 114);
-            this.comboBoxSex.Name = "comboBoxSex";
-            this.comboBoxSex.Size = new System.Drawing.Size(432, 28);
-            this.comboBoxSex.TabIndex = 10;
             // 
             // AddForm
             // 

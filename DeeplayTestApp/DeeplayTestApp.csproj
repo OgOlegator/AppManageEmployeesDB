@@ -67,6 +67,7 @@
     <Compile Include="AddForm.Designer.cs">
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Constants.cs" />
     <Compile Include="employeesDataSet.cs">
       <DependentUpon>employeesDataSet.xsd</DependentUpon>
     </Compile>

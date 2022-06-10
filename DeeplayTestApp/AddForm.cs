@@ -19,47 +19,67 @@ namespace DeeplayTestApp
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            Form1 main = Owner as Form1;
-            if (main != null)
+            var mainForm = Owner as Form1; 
+            DataRow newRow = mainForm.employeesDataSet.Employees.NewRow();
+            if (mainForm == null)
+                return;
+            
+            int id;
+            try
             {
-                DataRow newRow = main.employeesDataSet.Employees.NewRow();
+                id = mainForm.employeesDataSet.Employees.Max(x => x.Id) + 1;
+            }
+            catch
+            {
+                id = 1;
+            }
 
-                int id;
-                try
-                {
-                    id = main.employeesDataSet.Employees.Max(x => x.Id) + 1;
-                }
-                catch
-                {
-                    id = 1;
-                }
+            newRow[0] = id;
+            newRow[1] = textBoxName.Text;
+            newRow[2] = textBoxBirthday.Text;
+            newRow[3] = comboBoxSex.Text;
+            newRow[4] = comboBoxJobTitle.Text;
 
-                newRow[0] = id;
-                newRow[1] = textBoxName.Text;
-                newRow[2] = textBoxBirthday.Text;
-                newRow[3] = comboBoxSex.Text;
-                newRow[4] = comboBoxJobTitle.Text;
-
-                if (comboBoxJobTitle.Text == "Руководитель")
+            if (comboBoxJobTitle.Text == Constants.Supervisor)
+            {
+                var subdivision = mainForm.employeesDataSet.Employees
+                    .Where(x => x.Subdivision == textBoxSubdivision.Text).Select(x => x.JobTitle == Constants.Supervisor);
+                if (subdivision.Count() == 0)
                     newRow[5] = textBoxSubdivision.Text;
                 else
                 {
-                    newRow[5] = textBoxSubdivision.Text;
-                    //newRow[5] = main.employeesDataSet.Employees.
-                    //    Where(x => x.AdditionalInformation == textBoxSubdivision.Text).Select(x => x.Name);
+                    MessageBox.Show("В этом отделе уже есть руководитель");
+                    return;
                 }
-                newRow[6] = textBoxSubdivision.Text;
-
-                main.employeesDataSet.Employees.Rows.Add(newRow);
-                main.employeesTableAdapter.Update(main.employeesDataSet);
-                main.employeesDataSet.Employees.AcceptChanges(); 
-                main.dataGridView1.Refresh();
-                textBoxName.Text = "";
-                textBoxBirthday.Text = "";
-                comboBoxSex.Text = "";
-                comboBoxJobTitle.Text = "";
-                textBoxSubdivision.Text = "";
             }
+            else if (comboBoxJobTitle.Text == Constants.Director)
+            {
+                newRow[5] = "";
+            }
+            else
+            {
+                try
+                {
+                    newRow[5] = mainForm.employeesDataSet.Employees.
+                                 FirstOrDefault(x => x.AdditionalInformation == textBoxSubdivision.Text)?.Name;
+                }
+                catch
+                {
+                    newRow[5] = "";
+                }
+            }
+            newRow[6] = textBoxSubdivision.Text;
+
+            mainForm.employeesDataSet.Employees.Rows.Add(newRow);
+            mainForm.employeesTableAdapter.Update(mainForm.employeesDataSet);
+            mainForm.employeesDataSet.Employees.AcceptChanges();
+            mainForm.dataGridView1.Refresh();
+            textBoxName.Text = "";
+            textBoxBirthday.Text = "";
+            comboBoxSex.Text = "";
+            comboBoxJobTitle.Text = "";
+            textBoxSubdivision.Text = "";
+            
         }
 
         private void CloseButton_Click(object sender, EventArgs e)

@@ -495,9 +495,7 @@ namespace DeeplayTestApp {
                 this.columnSex.MaxLength = 1;
                 this.columnJobTitle.AllowDBNull = false;
                 this.columnJobTitle.MaxLength = 30;
-                this.columnAdditionalInformation.AllowDBNull = false;
                 this.columnAdditionalInformation.MaxLength = 50;
-                this.columnSubdivision.AllowDBNull = false;
                 this.columnSubdivision.MaxLength = 30;
             }
             
@@ -698,7 +696,12 @@ namespace DeeplayTestApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string AdditionalInformation {
                 get {
-                    return ((string)(this[this.tableEmployees.AdditionalInformationColumn]));
+                    if (this.IsAdditionalInformationNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableEmployees.AdditionalInformationColumn]));
+                    }
                 }
                 set {
                     this[this.tableEmployees.AdditionalInformationColumn] = value;
@@ -709,11 +712,40 @@ namespace DeeplayTestApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Subdivision {
                 get {
-                    return ((string)(this[this.tableEmployees.SubdivisionColumn]));
+                    if (this.IsSubdivisionNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableEmployees.SubdivisionColumn]));
+                    }
                 }
                 set {
                     this[this.tableEmployees.SubdivisionColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAdditionalInformationNull() {
+                return this.IsNull(this.tableEmployees.AdditionalInformationColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAdditionalInformationNull() {
+                this[this.tableEmployees.AdditionalInformationColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSubdivisionNull() {
+                return this.IsNull(this.tableEmployees.SubdivisionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSubdivisionNull() {
+                this[this.tableEmployees.SubdivisionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1025,13 +1057,13 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FRO
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_JobTitle));
             }
             if ((Original_AdditionalInformation == null)) {
-                throw new global::System.ArgumentNullException("Original_AdditionalInformation");
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_AdditionalInformation));
             }
             if ((Original_Subdivision == null)) {
-                throw new global::System.ArgumentNullException("Original_Subdivision");
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Subdivision));
@@ -1078,13 +1110,13 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FRO
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(JobTitle));
             }
             if ((AdditionalInformation == null)) {
-                throw new global::System.ArgumentNullException("AdditionalInformation");
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = ((string)(AdditionalInformation));
             }
             if ((Subdivision == null)) {
-                throw new global::System.ArgumentNullException("Subdivision");
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Subdivision));
@@ -1131,13 +1163,13 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FRO
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(JobTitle));
             }
             if ((AdditionalInformation == null)) {
-                throw new global::System.ArgumentNullException("AdditionalInformation");
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(AdditionalInformation));
             }
             if ((Subdivision == null)) {
-                throw new global::System.ArgumentNullException("Subdivision");
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Subdivision));
@@ -1163,13 +1195,13 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FRO
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_JobTitle));
             }
             if ((Original_AdditionalInformation == null)) {
-                throw new global::System.ArgumentNullException("Original_AdditionalInformation");
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_AdditionalInformation));
             }
             if ((Original_Subdivision == null)) {
-                throw new global::System.ArgumentNullException("Original_Subdivision");
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Subdivision));
