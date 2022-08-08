@@ -1,4 +1,4 @@
-﻿namespace DeeplayTestApp
+﻿namespace DeeplayTestApp.DB
 {
 
 

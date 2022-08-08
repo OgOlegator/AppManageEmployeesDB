@@ -12,33 +12,31 @@ namespace DeeplayTestApp
 {
     public partial class AddForm : Form
     {
-        private Form1 _mainForm;
+        private MainForm _mainForm;
         private string _mode;
         private int _IdRowUpdate;
 
-        public AddForm(Form1 form, string mode)
+        public AddForm(MainForm form, string mode)             //Конструктор для добавления строки
+        {
+            InitializeComponent();
+            _mainForm = form;
+            _mode = mode;
+        }
+
+        public AddForm(MainForm form, string mode, int id)     //Конструктор для изменения строки
         {
             InitializeComponent();
             _mainForm = form;
             _mode = mode;
 
-            if(_mode == Constants.ModeUpdate)
+            foreach (var rowEmployee in _mainForm.employeesDataSet.Employees.Where(x => x.Id == id))
             {
-                if (_mainForm.dataGridView1.SelectedRows == null)
-                {
-                    MessageBox.Show("Не выбрана строка для изменения");
-                    Close();
-                }
-
-                foreach(employeesDataSet.EmployeesRow row in _mainForm.dataGridView1.SelectedRows)
-                {
-                    _IdRowUpdate = row.Id;
-                    textBoxName.Text = row.Name;
-                    textBoxBirthday.Text = row.Birthday.ToString();
-                    comboBoxJobTitle.Text = row.JobTitle;
-                    comboBoxSex.Text = row.Sex;
-                    textBoxSubdivision.Text = row.Subdivision;
-                }
+                _IdRowUpdate = rowEmployee.Id;
+                textBoxName.Text = rowEmployee.Name;
+                textBoxBirthday.Text = rowEmployee.Birthday.ToString();
+                comboBoxJobTitle.Text = rowEmployee.JobTitle;
+                comboBoxSex.Text = rowEmployee.Sex;
+                textBoxSubdivision.Text = rowEmployee.Subdivision;
             }
         }
 
