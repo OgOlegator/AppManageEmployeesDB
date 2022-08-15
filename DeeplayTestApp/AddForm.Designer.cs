@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.birthdayPicker = new System.Windows.Forms.DateTimePicker();
             this.comboBoxSex = new System.Windows.Forms.ComboBox();
             this.comboBoxJobTitle = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -37,7 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxSubdivision = new System.Windows.Forms.TextBox();
-            this.textBoxBirthday = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SaveButton = new System.Windows.Forms.Button();
@@ -50,6 +50,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.birthdayPicker);
             this.groupBox1.Controls.Add(this.comboBoxSex);
             this.groupBox1.Controls.Add(this.comboBoxJobTitle);
             this.groupBox1.Controls.Add(this.label5);
@@ -58,7 +59,6 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBoxSubdivision);
-            this.groupBox1.Controls.Add(this.textBoxBirthday);
             this.groupBox1.Controls.Add(this.textBoxName);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -67,6 +67,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Добавить сотрудника";
+            // 
+            // birthdayPicker
+            // 
+            this.birthdayPicker.Checked = false;
+            this.birthdayPicker.Location = new System.Drawing.Point(186, 80);
+            this.birthdayPicker.Name = "birthdayPicker";
+            this.birthdayPicker.Size = new System.Drawing.Size(433, 27);
+            this.birthdayPicker.TabIndex = 11;
             // 
             // comboBoxSex
             // 
@@ -77,9 +85,10 @@
             this.comboBoxSex.Items.AddRange(new object[] {
             "М",
             "Ж"});
-            this.comboBoxSex.Location = new System.Drawing.Point(187, 114);
+            this.comboBoxSex.Location = new System.Drawing.Point(186, 113);
+            this.comboBoxSex.MaxLength = 1;
             this.comboBoxSex.Name = "comboBoxSex";
-            this.comboBoxSex.Size = new System.Drawing.Size(432, 28);
+            this.comboBoxSex.Size = new System.Drawing.Size(433, 28);
             this.comboBoxSex.TabIndex = 10;
             // 
             // comboBoxJobTitle
@@ -93,7 +102,8 @@
             "Руководитель",
             "Контролер",
             "Рабочий"});
-            this.comboBoxJobTitle.Location = new System.Drawing.Point(186, 146);
+            this.comboBoxJobTitle.Location = new System.Drawing.Point(186, 147);
+            this.comboBoxJobTitle.MaxLength = 30;
             this.comboBoxJobTitle.Name = "comboBoxJobTitle";
             this.comboBoxJobTitle.Size = new System.Drawing.Size(433, 28);
             this.comboBoxJobTitle.TabIndex = 3;
@@ -154,22 +164,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSubdivision.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSubdivision.Location = new System.Drawing.Point(186, 184);
-            this.textBoxSubdivision.MaxLength = 50;
+            this.textBoxSubdivision.Location = new System.Drawing.Point(186, 181);
+            this.textBoxSubdivision.MaxLength = 30;
             this.textBoxSubdivision.Name = "textBoxSubdivision";
             this.textBoxSubdivision.Size = new System.Drawing.Size(433, 27);
             this.textBoxSubdivision.TabIndex = 4;
-            // 
-            // textBoxBirthday
-            // 
-            this.textBoxBirthday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxBirthday.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxBirthday.Location = new System.Drawing.Point(186, 80);
-            this.textBoxBirthday.Name = "textBoxBirthday";
-            this.textBoxBirthday.Size = new System.Drawing.Size(433, 27);
-            this.textBoxBirthday.TabIndex = 1;
             // 
             // textBoxName
             // 
@@ -232,12 +231,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxSubdivision;
-        private System.Windows.Forms.TextBox textBoxBirthday;
         private System.Windows.Forms.TextBox textBoxName;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.ComboBox comboBoxSex;
         private System.Windows.Forms.ComboBox comboBoxJobTitle;
+        private System.Windows.Forms.DateTimePicker birthdayPicker;
     }
 }

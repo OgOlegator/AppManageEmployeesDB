@@ -38,22 +38,12 @@ namespace DeeplayTestApp
             if (dr == DialogResult.Cancel)
                 return;
 
-            //Фактически будет только 1 строка так как свойство MultiSelect для DataGridView отключено
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-            {
-                dataGridView1.Rows.Remove(row);
-                employeesTableAdapter.Update(employeesDataSet);
-                employeesDataSet.Employees.AcceptChanges();
-                dataGridView1.Refresh();
-            }
+            
         }
 
         private void CallAddForm(string mode, int id = 0)
         {
-            AddForm addForm = mode == Constants.ModeUpdate ?
-                new AddForm(this, mode, id) :
-                new AddForm(this, mode);
-
+            var addForm = new AddForm(this, _sqlConnection, mode);
             addForm.Owner = this;
             addForm.ShowDialog();
         }

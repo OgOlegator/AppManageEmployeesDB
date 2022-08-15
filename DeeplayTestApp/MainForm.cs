@@ -14,7 +14,7 @@ namespace DeeplayTestApp
 {
     public partial class MainForm : Form
     {
-        private SqlConnection sqlConnection = null;
+        private SqlConnection _sqlConnection = null;
 
         public MainForm()
         {
@@ -23,9 +23,9 @@ namespace DeeplayTestApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            sqlConnection = new SqlConnection(ConfigurationManager
+            _sqlConnection = new SqlConnection(ConfigurationManager
                 .ConnectionStrings["DeeplayTestApp.Properties.Settings.employeesConnectionString"].ConnectionString);
-            sqlConnection.Open();
+            _sqlConnection.Open();
 
             //Данная строка кода позволяет загрузить данные в таблицу "employeesDataSet.Employees".
             //При необходимости она может быть перемещена или удалена.

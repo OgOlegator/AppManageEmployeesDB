@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace DeeplayTestApp
 {
@@ -14,73 +15,44 @@ namespace DeeplayTestApp
     {
         private MainForm _mainForm;
         private string _mode;
-        private int _IdRowUpdate;
+        private SqlConnection _sqlConnection;
 
-        public AddForm(MainForm form, string mode)             //Конструктор для добавления строки
+        public AddForm(MainForm form, SqlConnection sqlConnection, string mode)             //Конструктор для добавления строки
         {
             InitializeComponent();
             _mainForm = form;
             _mode = mode;
-        }
+            _sqlConnection = sqlConnection;
 
-        public AddForm(MainForm form, string mode, int id)     //Конструктор для изменения строки
-        {
-            InitializeComponent();
-            _mainForm = form;
-            _mode = mode;
-
-            foreach (var rowEmployee in _mainForm.employeesDataSet.Employees.Where(x => x.Id == id))
-            {
-                _IdRowUpdate = rowEmployee.Id;
-                textBoxName.Text = rowEmployee.Name;
-                textBoxBirthday.Text = rowEmployee.Birthday.ToString();
-                comboBoxJobTitle.Text = rowEmployee.JobTitle;
-                comboBoxSex.Text = rowEmployee.Sex;
-                textBoxSubdivision.Text = rowEmployee.Subdivision;
-            }
+            //if(mode == Constants.ModeUpdate)
+            //    foreach (var rowEmployee in _mainForm.employeesDataSet.Employees.Where(x => x.Id == id))
+            //    {
+            //        textBoxName.Text = rowEmployee.Name;
+            //        birthdayPicker.Value = rowEmployee.Birthday;
+            //        comboBoxJobTitle.Text = rowEmployee.JobTitle;
+            //        comboBoxSex.Text = rowEmployee.Sex;
+            //        textBoxSubdivision.Text = rowEmployee.Subdivision;
+            //    }
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            DataRow newRow = _mainForm.employeesDataSet.Employees.NewRow();
+            var command = 
+                new SqlCommand("INSERT INTO [employees] (Name, Birthday, Sex, JobTitle, Subdivision) " +
+                $"VALUES (@Name, @Birthday, @Sex, @JobTitle, @Subdivision)", 
+                _sqlConnection);
 
-            newRow[0] = _mode == Constants.ModeUpdate ? _IdRowUpdate : GetNewId();
-            newRow[1] = textBoxName.Text;
-            newRow[2] = textBoxBirthday.Text;
-            newRow[3] = comboBoxSex.Text;
-            newRow[4] = comboBoxJobTitle.Text;
+            var date = birthdayPicker.Value.Date;
 
-            if (comboBoxJobTitle.Text == Constants.Supervisor)
-            {
-                var subdivision = _mainForm.employeesDataSet.Employees
-                    .Where(x => x.Subdivision == textBoxSubdivision.Text).Select(x => x.JobTitle == Constants.Supervisor);
-                if (subdivision.Count() == 0)
-                    newRow[5] = textBoxSubdivision.Text;
-                else
-                {
-                    MessageBox.Show("В этом отделе уже есть руководитель");
-                    return;
-                }
-            }
-            else if (comboBoxJobTitle.Text == Constants.Director)
-            {
-                newRow[5] = "";
-            }
-            else
-            {
-                try
-                {
-                    newRow[5] = _mainForm.employeesDataSet.Employees.
-                                 FirstOrDefault(x => x.AdditionalInformation == textBoxSubdivision.Text)?.Name;
-                }
-                catch
-                {
-                    newRow[5] = "";
-                }
-            }
-            newRow[6] = textBoxSubdivision.Text;
+            command.Parameters.AddWithValue("Name", textBoxName.Text);
+            command.Parameters.AddWithValue("Birthday", $"{date.Month}/{date.Day}/{date.Year}");
+            command.Parameters.AddWithValue("Sex", comboBoxSex.Text);
+            command.Parameters.AddWithValue("JobTitle", comboBoxJobTitle.Text);
+            command.Parameters.AddWithValue("Subdivision", textBoxSubdivision.Text);
 
-            UpdateDatabase(newRow);
+            command.ExecuteNonQuery();
+            _mainForm.employeesTableAdapter.Update(_mainForm.employeesDataSet);
+            _mainForm.dataGridView1.Refresh();
             ClearFields();
         }
 
@@ -92,32 +64,18 @@ namespace DeeplayTestApp
         private void ClearFields()
         {
             textBoxName.Text = "";
-            textBoxBirthday.Text = "";
+            birthdayPicker = null;
             comboBoxSex.Text = "";
             comboBoxJobTitle.Text = "";
             textBoxSubdivision.Text = "";
         }
 
-        private void UpdateDatabase(DataRow updateRow)
+        private void UpdateDatabase()//DataRow updateRow)
         {
-            _mainForm.employeesDataSet.Employees.Rows.Add(updateRow);
+            // _mainForm.employeesDataSet.Employees.Rows.Add(updateRow);
             _mainForm.employeesTableAdapter.Update(_mainForm.employeesDataSet);
             _mainForm.employeesDataSet.Employees.AcceptChanges();
             _mainForm.dataGridView1.Refresh();
-        }
-
-        private int GetNewId()
-        {
-            int id;
-            try
-            {
-                id = _mainForm.employeesDataSet.Employees.Max(x => x.Id) + 1;
-            }
-            catch
-            {
-                id = 1;
-            }
-            return id;
         }
     }
 }
