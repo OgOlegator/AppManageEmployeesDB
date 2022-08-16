@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace DeeplayTestApp
 {
@@ -38,12 +35,23 @@ namespace DeeplayTestApp
             if (dr == DialogResult.Cancel)
                 return;
 
-            
+            var rowDeleted = dataGridView1.SelectedRows[0];
+            var id = Convert.ToInt32(rowDeleted.Cells[0].Value);
+
+            var command = new SqlCommand($"delete from [employees] where Id = {id}", DB.GetConnection());
+
+            DB.OpenConnection();
+            command.ExecuteNonQuery();
+
+            employeesTableAdapter.Update(employeesDataSet.Employees);
+            employeesTableAdapter.UpdateCommand(employeesDataSet.Employees);
+
+            DB.CloseConnection();
         }
 
         private void CallAddForm(string mode, int id = 0)
         {
-            var addForm = new AddForm(this, _sqlConnection, mode);
+            var addForm = new AddForm(this, mode);
             addForm.Owner = this;
             addForm.ShowDialog();
         }

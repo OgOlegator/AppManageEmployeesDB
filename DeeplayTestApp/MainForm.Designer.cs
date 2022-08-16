@@ -34,19 +34,18 @@ namespace DeeplayTestApp
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Subdivision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddButton = new System.Windows.Forms.Button();
+            this.ChangeButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.birthdayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sexDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jobTitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subdivision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.additionalInformationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subdivisionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.employeesDataSet = new DeeplayTestApp.DB.employeesDataSet();
-            this.AddButton = new System.Windows.Forms.Button();
-            this.ChangeButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
             this.employeesTableAdapter = new DeeplayTestApp.DB.employeesDataSetTableAdapters.EmployeesTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource1)).BeginInit();
@@ -79,8 +78,7 @@ namespace DeeplayTestApp
             this.sexDataGridViewTextBoxColumn,
             this.jobTitleDataGridViewTextBoxColumn,
             this.Subdivision,
-            this.additionalInformationDataGridViewTextBoxColumn,
-            this.subdivisionDataGridViewTextBoxColumn});
+            this.additionalInformationDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.employeesBindingSource1;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveBorder;
             this.dataGridView1.Location = new System.Drawing.Point(6, 8);
@@ -94,6 +92,51 @@ namespace DeeplayTestApp
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1090, 333);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // Subdivision
+            // 
+            this.Subdivision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Subdivision.DataPropertyName = "Subdivision";
+            this.Subdivision.FillWeight = 20F;
+            this.Subdivision.HeaderText = "Подразделение";
+            this.Subdivision.MinimumWidth = 6;
+            this.Subdivision.Name = "Subdivision";
+            // 
+            // AddButton
+            // 
+            this.AddButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.AddButton.Location = new System.Drawing.Point(180, 349);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(4);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(208, 45);
+            this.AddButton.TabIndex = 1;
+            this.AddButton.Text = "Добавить";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            // 
+            // ChangeButton
+            // 
+            this.ChangeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.ChangeButton.Location = new System.Drawing.Point(404, 349);
+            this.ChangeButton.Margin = new System.Windows.Forms.Padding(4);
+            this.ChangeButton.Name = "ChangeButton";
+            this.ChangeButton.Size = new System.Drawing.Size(214, 45);
+            this.ChangeButton.TabIndex = 2;
+            this.ChangeButton.Text = "Изменить";
+            this.ChangeButton.UseVisualStyleBackColor = true;
+            this.ChangeButton.Click += new System.EventHandler(this.ChangeButton_Click);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.DeleteButton.Location = new System.Drawing.Point(631, 349);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(214, 45);
+            this.DeleteButton.TabIndex = 3;
+            this.DeleteButton.Text = "Удалить";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -137,15 +180,6 @@ namespace DeeplayTestApp
             this.jobTitleDataGridViewTextBoxColumn.Name = "jobTitleDataGridViewTextBoxColumn";
             this.jobTitleDataGridViewTextBoxColumn.Width = 125;
             // 
-            // Subdivision
-            // 
-            this.Subdivision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Subdivision.DataPropertyName = "Subdivision";
-            this.Subdivision.FillWeight = 20F;
-            this.Subdivision.HeaderText = "Подразделение";
-            this.Subdivision.MinimumWidth = 6;
-            this.Subdivision.Name = "Subdivision";
-            // 
             // additionalInformationDataGridViewTextBoxColumn
             // 
             this.additionalInformationDataGridViewTextBoxColumn.DataPropertyName = "AdditionalInformation";
@@ -153,14 +187,6 @@ namespace DeeplayTestApp
             this.additionalInformationDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.additionalInformationDataGridViewTextBoxColumn.Name = "additionalInformationDataGridViewTextBoxColumn";
             this.additionalInformationDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // subdivisionDataGridViewTextBoxColumn
-            // 
-            this.subdivisionDataGridViewTextBoxColumn.DataPropertyName = "Subdivision";
-            this.subdivisionDataGridViewTextBoxColumn.HeaderText = "Subdivision";
-            this.subdivisionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.subdivisionDataGridViewTextBoxColumn.Name = "subdivisionDataGridViewTextBoxColumn";
-            this.subdivisionDataGridViewTextBoxColumn.Width = 125;
             // 
             // employeesBindingSource1
             // 
@@ -171,42 +197,6 @@ namespace DeeplayTestApp
             // 
             this.employeesDataSet.DataSetName = "employeesDataSet";
             this.employeesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // AddButton
-            // 
-            this.AddButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.AddButton.Location = new System.Drawing.Point(180, 349);
-            this.AddButton.Margin = new System.Windows.Forms.Padding(4);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(208, 45);
-            this.AddButton.TabIndex = 1;
-            this.AddButton.Text = "Добавить";
-            this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
-            // 
-            // ChangeButton
-            // 
-            this.ChangeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ChangeButton.Location = new System.Drawing.Point(404, 349);
-            this.ChangeButton.Margin = new System.Windows.Forms.Padding(4);
-            this.ChangeButton.Name = "ChangeButton";
-            this.ChangeButton.Size = new System.Drawing.Size(214, 45);
-            this.ChangeButton.TabIndex = 2;
-            this.ChangeButton.Text = "Изменить";
-            this.ChangeButton.UseVisualStyleBackColor = true;
-            this.ChangeButton.Click += new System.EventHandler(this.ChangeButton_Click);
-            // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.DeleteButton.Location = new System.Drawing.Point(631, 349);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(214, 45);
-            this.DeleteButton.TabIndex = 3;
-            this.DeleteButton.Text = "Удалить";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // employeesTableAdapter
             // 
@@ -225,6 +215,7 @@ namespace DeeplayTestApp
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
+            this.ShowIcon = false;
             this.Text = "Сотрудники";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -249,7 +240,6 @@ namespace DeeplayTestApp
         private System.Windows.Forms.DataGridViewTextBoxColumn jobTitleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Subdivision;
         private System.Windows.Forms.DataGridViewTextBoxColumn additionalInformationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subdivisionDataGridViewTextBoxColumn;
     }
 }
 

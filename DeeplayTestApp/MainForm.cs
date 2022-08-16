@@ -14,7 +14,7 @@ namespace DeeplayTestApp
 {
     public partial class MainForm : Form
     {
-        private SqlConnection _sqlConnection = null;
+        public DataBase DB;
 
         public MainForm()
         {
@@ -23,13 +23,16 @@ namespace DeeplayTestApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _sqlConnection = new SqlConnection(ConfigurationManager
-                .ConnectionStrings["DeeplayTestApp.Properties.Settings.employeesConnectionString"].ConnectionString);
-            _sqlConnection.Open();
+            DB = new DataBase();
+
+            DB.OpenConnection();
 
             //Данная строка кода позволяет загрузить данные в таблицу "employeesDataSet.Employees".
             //При необходимости она может быть перемещена или удалена.
             employeesTableAdapter.Fill(employeesDataSet.Employees);
+            employeesTableAdapter.UpdateCommand(employeesDataSet.Employees);
+
+            DB.CloseConnection();
         }
 
         private void AddButton_Click(object sender, EventArgs e) => AddEmployee();
@@ -37,5 +40,18 @@ namespace DeeplayTestApp
         private void ChangeButton_Click(object sender, EventArgs e) => ChangeEmployee();
 
         private void DeleteButton_Click(object sender, EventArgs e) => DeleteEmployee();
+
+        private void updateCommandToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.employeesTableAdapter.UpdateCommand(this.employeesDataSet.Employees);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 }

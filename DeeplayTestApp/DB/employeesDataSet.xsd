@@ -78,50 +78,59 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FRO
               <Mapping SourceColumn="AdditionalInformation" DataSetColumn="AdditionalInformation" />
               <Mapping SourceColumn="Subdivision" DataSetColumn="Subdivision" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="employeesConnectionString (Settings)" DbObjectName="dbo.Employees" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="UpdateCommand" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="UpdateCommand" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UpdateCommand">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FROM dbo.Employees</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="employeesDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="employeesDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="employeesDataSet">
+  <xs:element name="employeesDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="employeesDataSet" msprop:Generator_UserDSName="employeesDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Employees" msprop:Generator_RowEvHandlerName="EmployeesRowChangeEventHandler" msprop:Generator_RowDeletedName="EmployeesRowDeleted" msprop:Generator_RowDeletingName="EmployeesRowDeleting" msprop:Generator_RowEvArgName="EmployeesRowChangeEvent" msprop:Generator_TablePropName="Employees" msprop:Generator_RowChangedName="EmployeesRowChanged" msprop:Generator_UserTableName="Employees" msprop:Generator_RowChangingName="EmployeesRowChanging" msprop:Generator_RowClassName="EmployeesRow" msprop:Generator_TableClassName="EmployeesDataTable" msprop:Generator_TableVarName="tableEmployees">
+        <xs:element name="Employees" msprop:Generator_UserTableName="Employees" msprop:Generator_RowEvArgName="EmployeesRowChangeEvent" msprop:Generator_TableVarName="tableEmployees" msprop:Generator_TablePropName="Employees" msprop:Generator_RowDeletingName="EmployeesRowDeleting" msprop:Generator_RowChangingName="EmployeesRowChanging" msprop:Generator_RowDeletedName="EmployeesRowDeleted" msprop:Generator_RowEvHandlerName="EmployeesRowChangeEventHandler" msprop:Generator_TableClassName="EmployeesDataTable" msprop:Generator_RowChangedName="EmployeesRowChanged" msprop:Generator_RowClassName="EmployeesRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:int" />
-              <xs:element name="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName">
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Birthday" msprop:Generator_ColumnPropNameInTable="BirthdayColumn" msprop:Generator_ColumnPropNameInRow="Birthday" msprop:Generator_UserColumnName="Birthday" msprop:Generator_ColumnVarNameInTable="columnBirthday" type="xs:dateTime" />
-              <xs:element name="Sex" msprop:Generator_ColumnPropNameInTable="SexColumn" msprop:Generator_ColumnPropNameInRow="Sex" msprop:Generator_UserColumnName="Sex" msprop:Generator_ColumnVarNameInTable="columnSex">
+              <xs:element name="Birthday" msprop:Generator_ColumnVarNameInTable="columnBirthday" msprop:Generator_ColumnPropNameInRow="Birthday" msprop:Generator_ColumnPropNameInTable="BirthdayColumn" msprop:Generator_UserColumnName="Birthday" type="xs:dateTime" />
+              <xs:element name="Sex" msprop:Generator_ColumnVarNameInTable="columnSex" msprop:Generator_ColumnPropNameInRow="Sex" msprop:Generator_ColumnPropNameInTable="SexColumn" msprop:Generator_UserColumnName="Sex">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="1" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="JobTitle" msprop:Generator_ColumnPropNameInTable="JobTitleColumn" msprop:Generator_ColumnPropNameInRow="JobTitle" msprop:Generator_UserColumnName="JobTitle" msprop:Generator_ColumnVarNameInTable="columnJobTitle">
+              <xs:element name="JobTitle" msprop:Generator_ColumnVarNameInTable="columnJobTitle" msprop:Generator_ColumnPropNameInRow="JobTitle" msprop:Generator_ColumnPropNameInTable="JobTitleColumn" msprop:Generator_UserColumnName="JobTitle">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="AdditionalInformation" msprop:Generator_ColumnPropNameInTable="AdditionalInformationColumn" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="AdditionalInformation" msprop:Generator_UserColumnName="AdditionalInformation" msprop:Generator_ColumnVarNameInTable="columnAdditionalInformation" minOccurs="0">
+              <xs:element name="AdditionalInformation" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="AdditionalInformation" msprop:Generator_ColumnVarNameInTable="columnAdditionalInformation" msprop:Generator_ColumnPropNameInTable="AdditionalInformationColumn" msprop:Generator_UserColumnName="AdditionalInformation" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Subdivision" msprop:Generator_ColumnPropNameInTable="SubdivisionColumn" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="Subdivision" msprop:Generator_UserColumnName="Subdivision" msprop:Generator_ColumnVarNameInTable="columnSubdivision" minOccurs="0">
+              <xs:element name="Subdivision" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="Subdivision" msprop:Generator_ColumnVarNameInTable="columnSubdivision" msprop:Generator_ColumnPropNameInTable="SubdivisionColumn" msprop:Generator_UserColumnName="Subdivision" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />

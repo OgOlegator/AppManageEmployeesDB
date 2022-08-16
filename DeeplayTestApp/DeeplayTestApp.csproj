@@ -69,6 +69,7 @@
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
+    <Compile Include="DataBase.cs" />
     <Compile Include="DB\employeesDataSet.cs">
       <DependentUpon>employeesDataSet.xsd</DependentUpon>
     </Compile>
@@ -102,6 +103,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="DB\employeesDataSet.xsc">
       <DependentUpon>employeesDataSet.xsd</DependentUpon>
@@ -135,6 +137,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>employees.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\icons8-база-данных-16.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

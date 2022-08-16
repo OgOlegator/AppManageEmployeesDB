@@ -15,14 +15,12 @@ namespace DeeplayTestApp
     {
         private MainForm _mainForm;
         private string _mode;
-        private SqlConnection _sqlConnection;
 
-        public AddForm(MainForm form, SqlConnection sqlConnection, string mode)             //Конструктор для добавления строки
+        public AddForm(MainForm form, string mode)             //Конструктор для добавления строки
         {
             InitializeComponent();
             _mainForm = form;
             _mode = mode;
-            _sqlConnection = sqlConnection;
 
             //if(mode == Constants.ModeUpdate)
             //    foreach (var rowEmployee in _mainForm.employeesDataSet.Employees.Where(x => x.Id == id))
@@ -40,7 +38,7 @@ namespace DeeplayTestApp
             var command = 
                 new SqlCommand("INSERT INTO [employees] (Name, Birthday, Sex, JobTitle, Subdivision) " +
                 $"VALUES (@Name, @Birthday, @Sex, @JobTitle, @Subdivision)", 
-                _sqlConnection);
+                _mainForm.DB.GetConnection());
 
             var date = birthdayPicker.Value.Date;
 
@@ -50,9 +48,13 @@ namespace DeeplayTestApp
             command.Parameters.AddWithValue("JobTitle", comboBoxJobTitle.Text);
             command.Parameters.AddWithValue("Subdivision", textBoxSubdivision.Text);
 
+            _mainForm.DB.OpenConnection();
+
             command.ExecuteNonQuery();
-            _mainForm.employeesTableAdapter.Update(_mainForm.employeesDataSet);
-            _mainForm.dataGridView1.Refresh();
+
+            _mainForm.employeesTableAdapter.UpdateCommand(_mainForm.employeesDataSet.Employees);
+            _mainForm.employeesTableAdapter.UpdateCommand(_mainForm.employeesDataSet.Employees);
+            _mainForm.DB.CloseConnection();
             ClearFields();
         }
 
