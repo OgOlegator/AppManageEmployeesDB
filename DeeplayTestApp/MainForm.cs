@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using DeeplayTestApp.DB;
 
 namespace DeeplayTestApp
 {
     public partial class MainForm : Form
     {
-        public DataBase DB;
+        public Connection ConnectDB;
 
         public MainForm()
         {
@@ -23,16 +24,8 @@ namespace DeeplayTestApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            DB = new DataBase();
-
-            DB.OpenConnection();
-
-            //Данная строка кода позволяет загрузить данные в таблицу "employeesDataSet.Employees".
-            //При необходимости она может быть перемещена или удалена.
-            employeesTableAdapter.Fill(employeesDataSet.Employees);
-            employeesTableAdapter.UpdateCommand(employeesDataSet.Employees);
-
-            DB.CloseConnection();
+            ConnectDB = new Connection();
+            FillDB();
         }
 
         private void AddButton_Click(object sender, EventArgs e) => AddEmployee();
@@ -41,17 +34,5 @@ namespace DeeplayTestApp
 
         private void DeleteButton_Click(object sender, EventArgs e) => DeleteEmployee();
 
-        private void updateCommandToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.employeesTableAdapter.UpdateCommand(this.employeesDataSet.Employees);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
     }
 }

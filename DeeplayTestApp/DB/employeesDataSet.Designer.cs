@@ -289,9 +289,9 @@ namespace DeeplayTestApp.DB {
             
             private global::System.Data.DataColumn columnJobTitle;
             
-            private global::System.Data.DataColumn columnAdditionalInformation;
-            
             private global::System.Data.DataColumn columnSubdivision;
+            
+            private global::System.Data.DataColumn columnAdditionalInfo;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -368,17 +368,17 @@ namespace DeeplayTestApp.DB {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn AdditionalInformationColumn {
+            public global::System.Data.DataColumn SubdivisionColumn {
                 get {
-                    return this.columnAdditionalInformation;
+                    return this.columnSubdivision;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn SubdivisionColumn {
+            public global::System.Data.DataColumn AdditionalInfoColumn {
                 get {
-                    return this.columnSubdivision;
+                    return this.columnAdditionalInfo;
                 }
             }
             
@@ -419,7 +419,7 @@ namespace DeeplayTestApp.DB {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public EmployeesRow AddEmployeesRow(int Id, string Name, System.DateTime Birthday, string Sex, string JobTitle, string AdditionalInformation, string Subdivision) {
+            public EmployeesRow AddEmployeesRow(int Id, string Name, System.DateTime Birthday, string Sex, string JobTitle, string Subdivision, string AdditionalInfo) {
                 EmployeesRow rowEmployeesRow = ((EmployeesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -427,8 +427,8 @@ namespace DeeplayTestApp.DB {
                         Birthday,
                         Sex,
                         JobTitle,
-                        AdditionalInformation,
-                        Subdivision};
+                        Subdivision,
+                        AdditionalInfo};
                 rowEmployeesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEmployeesRow);
                 return rowEmployeesRow;
@@ -463,8 +463,8 @@ namespace DeeplayTestApp.DB {
                 this.columnBirthday = base.Columns["Birthday"];
                 this.columnSex = base.Columns["Sex"];
                 this.columnJobTitle = base.Columns["JobTitle"];
-                this.columnAdditionalInformation = base.Columns["AdditionalInformation"];
                 this.columnSubdivision = base.Columns["Subdivision"];
+                this.columnAdditionalInfo = base.Columns["AdditionalInfo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -480,23 +480,22 @@ namespace DeeplayTestApp.DB {
                 base.Columns.Add(this.columnSex);
                 this.columnJobTitle = new global::System.Data.DataColumn("JobTitle", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnJobTitle);
-                this.columnAdditionalInformation = new global::System.Data.DataColumn("AdditionalInformation", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAdditionalInformation);
                 this.columnSubdivision = new global::System.Data.DataColumn("Subdivision", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSubdivision);
+                this.columnAdditionalInfo = new global::System.Data.DataColumn("AdditionalInfo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAdditionalInfo);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AllowDBNull = false;
                 this.columnId.Unique = true;
                 this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 50;
-                this.columnBirthday.AllowDBNull = false;
                 this.columnSex.AllowDBNull = false;
                 this.columnSex.MaxLength = 1;
                 this.columnJobTitle.AllowDBNull = false;
                 this.columnJobTitle.MaxLength = 30;
-                this.columnAdditionalInformation.MaxLength = 50;
                 this.columnSubdivision.MaxLength = 30;
+                this.columnAdditionalInfo.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -663,7 +662,12 @@ namespace DeeplayTestApp.DB {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime Birthday {
                 get {
-                    return ((global::System.DateTime)(this[this.tableEmployees.BirthdayColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableEmployees.BirthdayColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Birthday\' в таблице \'Employees\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableEmployees.BirthdayColumn] = value;
@@ -694,22 +698,6 @@ namespace DeeplayTestApp.DB {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string AdditionalInformation {
-                get {
-                    if (this.IsAdditionalInformationNull()) {
-                        return null;
-                    }
-                    else {
-                        return ((string)(this[this.tableEmployees.AdditionalInformationColumn]));
-                    }
-                }
-                set {
-                    this[this.tableEmployees.AdditionalInformationColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Subdivision {
                 get {
                     if (this.IsSubdivisionNull()) {
@@ -726,14 +714,30 @@ namespace DeeplayTestApp.DB {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsAdditionalInformationNull() {
-                return this.IsNull(this.tableEmployees.AdditionalInformationColumn);
+            public string AdditionalInfo {
+                get {
+                    try {
+                        return ((string)(this[this.tableEmployees.AdditionalInfoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'AdditionalInfo\' в таблице \'Employees\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEmployees.AdditionalInfoColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetAdditionalInformationNull() {
-                this[this.tableEmployees.AdditionalInformationColumn] = global::System.Convert.DBNull;
+            public bool IsBirthdayNull() {
+                return this.IsNull(this.tableEmployees.BirthdayColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBirthdayNull() {
+                this[this.tableEmployees.BirthdayColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -746,6 +750,18 @@ namespace DeeplayTestApp.DB {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetSubdivisionNull() {
                 this[this.tableEmployees.SubdivisionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsAdditionalInfoNull() {
+                return this.IsNull(this.tableEmployees.AdditionalInfoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetAdditionalInfoNull() {
+                this[this.tableEmployees.AdditionalInfoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -913,51 +929,50 @@ namespace DeeplayTestApp.DB.employeesDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Birthday", "Birthday");
             tableMapping.ColumnMappings.Add("Sex", "Sex");
             tableMapping.ColumnMappings.Add("JobTitle", "JobTitle");
-            tableMapping.ColumnMappings.Add("AdditionalInformation", "AdditionalInformation");
             tableMapping.ColumnMappings.Add("Subdivision", "Subdivision");
+            tableMapping.ColumnMappings.Add("AdditionalInfo", "AdditionalInfo");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Employees] WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([Birthday] = @Original_Birthday) AND ([Sex] = @Original_Sex) AND ([JobTitle] = @Original_JobTitle) AND ([AdditionalInformation] = @Original_AdditionalInformation) AND ([Subdivision] = @Original_Subdivision))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Employees] WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ((@IsNull_Birthday = 1 AND [Birthday] IS NULL) OR ([Birthday] = @Original_Birthday)) AND ([Sex] = @Original_Sex) AND ([JobTitle] = @Original_JobTitle) AND ((@IsNull_Subdivision = 1 AND [Subdivision] IS NULL) OR ([Subdivision] = @Original_Subdivision)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Birthday", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthday", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Birthday", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthday", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Sex", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JobTitle", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobTitle", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdditionalInformation", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdditionalInformation", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Subdivision", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Subdivision", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Subdivision", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Subdivision", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Employees] ([Id], [Name], [Birthday], [Sex], [JobTitle], [AdditionalInformation], [Subdivision]) VALUES (@Id, @Name, @Birthday, @Sex, @JobTitle, @AdditionalInformation, @Subdivision);
-SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FROM Employees WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Employees] ([Name], [Birthday], [Sex], [JobTitle], [Subdivision]) VALUES (@Name, @Birthday, @Sex, @JobTitle, @Subdivision);
+SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE WHEN JobTitle = 'Руководитель' THEN Subdivision ELSE JobTitle END AS AdditionalInfo FROM Employees WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Birthday", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthday", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sex", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JobTitle", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobTitle", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdditionalInformation", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdditionalInformation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Subdivision", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Subdivision", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Employees] SET [Id] = @Id, [Name] = @Name, [Birthday] = @Birthday, [Sex] = @Sex, [JobTitle] = @JobTitle, [AdditionalInformation] = @AdditionalInformation, [Subdivision] = @Subdivision WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([Birthday] = @Original_Birthday) AND ([Sex] = @Original_Sex) AND ([JobTitle] = @Original_JobTitle) AND ([AdditionalInformation] = @Original_AdditionalInformation) AND ([Subdivision] = @Original_Subdivision));
-SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FROM Employees WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Employees] SET [Name] = @Name, [Birthday] = @Birthday, [Sex] = @Sex, [JobTitle] = @JobTitle, [Subdivision] = @Subdivision WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ((@IsNull_Birthday = 1 AND [Birthday] IS NULL) OR ([Birthday] = @Original_Birthday)) AND ([Sex] = @Original_Sex) AND ([JobTitle] = @Original_JobTitle) AND ((@IsNull_Subdivision = 1 AND [Subdivision] IS NULL) OR ([Subdivision] = @Original_Subdivision)));
+SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE WHEN JobTitle = 'Руководитель' THEN Subdivision ELSE JobTitle END AS AdditionalInfo FROM Employees WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Birthday", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthday", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sex", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JobTitle", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobTitle", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdditionalInformation", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdditionalInformation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Subdivision", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Subdivision", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Birthday", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthday", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Birthday", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthday", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Sex", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JobTitle", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobTitle", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdditionalInformation", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdditionalInformation", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Subdivision", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Subdivision", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Subdivision", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Subdivision", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -973,13 +988,14 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FRO
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FROM" +
-                " dbo.Employees";
+            this._commandCollection[0].CommandText = "SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE WHEN JobTitle = \'Руко" +
+                "водитель\' THEN Subdivision ELSE JobTitle END AS AdditionalInfo\r\nFROM     Employe" +
+                "es";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FROM" +
-                " dbo.Employees";
+            this._commandCollection[1].CommandText = "SELECT Birthday, Id, JobTitle, Name, Sex, Subdivision, AdditionalInfo\r\nFROM     E" +
+                "mployees";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1053,7 +1069,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_Name, System.DateTime Original_Birthday, string Original_Sex, string Original_JobTitle, string Original_AdditionalInformation, string Original_Subdivision) {
+        public virtual int Delete(int Original_Id, string Original_Name, global::System.Nullable<global::System.DateTime> Original_Birthday, string Original_Sex, string Original_JobTitle, string Original_Subdivision) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
@@ -1061,30 +1077,33 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FRO
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Name));
             }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_Birthday));
+            if ((Original_Birthday.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(Original_Birthday.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
             if ((Original_Sex == null)) {
                 throw new global::System.ArgumentNullException("Original_Sex");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Sex));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Sex));
             }
             if ((Original_JobTitle == null)) {
                 throw new global::System.ArgumentNullException("Original_JobTitle");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_JobTitle));
-            }
-            if ((Original_AdditionalInformation == null)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_AdditionalInformation));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_JobTitle));
             }
             if ((Original_Subdivision == null)) {
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Subdivision));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_Subdivision));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1106,38 +1125,36 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Id, string Name, System.DateTime Birthday, string Sex, string JobTitle, string AdditionalInformation, string Subdivision) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
+        public virtual int Insert(string Name, global::System.Nullable<global::System.DateTime> Birthday, string Sex, string JobTitle, string Subdivision) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Name));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Name));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(Birthday));
+            if ((Birthday.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(Birthday.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             if ((Sex == null)) {
                 throw new global::System.ArgumentNullException("Sex");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Sex));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Sex));
             }
             if ((JobTitle == null)) {
                 throw new global::System.ArgumentNullException("JobTitle");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(JobTitle));
-            }
-            if ((AdditionalInformation == null)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(AdditionalInformation));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(JobTitle));
             }
             if ((Subdivision == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Subdivision));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Subdivision));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1159,71 +1176,73 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Id, string Name, System.DateTime Birthday, string Sex, string JobTitle, string AdditionalInformation, string Subdivision, int Original_Id, string Original_Name, System.DateTime Original_Birthday, string Original_Sex, string Original_JobTitle, string Original_AdditionalInformation, string Original_Subdivision) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
+        public virtual int Update(string Name, global::System.Nullable<global::System.DateTime> Birthday, string Sex, string JobTitle, string Subdivision, int Original_Id, string Original_Name, global::System.Nullable<global::System.DateTime> Original_Birthday, string Original_Sex, string Original_JobTitle, string Original_Subdivision, int Id) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Name));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Name));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(Birthday));
+            if ((Birthday.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(Birthday.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             if ((Sex == null)) {
                 throw new global::System.ArgumentNullException("Sex");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Sex));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Sex));
             }
             if ((JobTitle == null)) {
                 throw new global::System.ArgumentNullException("JobTitle");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(JobTitle));
-            }
-            if ((AdditionalInformation == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(AdditionalInformation));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(JobTitle));
             }
             if ((Subdivision == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Subdivision));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Subdivision));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Id));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Name));
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_Birthday));
+            if ((Original_Birthday.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_Birthday.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
             if ((Original_Sex == null)) {
                 throw new global::System.ArgumentNullException("Original_Sex");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Sex));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Sex));
             }
             if ((Original_JobTitle == null)) {
                 throw new global::System.ArgumentNullException("Original_JobTitle");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_JobTitle));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_JobTitle));
             }
-            if ((Original_AdditionalInformation == null)) {
+            if ((Original_Subdivision == null)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_AdditionalInformation));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Subdivision));
             }
-            if ((Original_Subdivision == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Subdivision));
-            }
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1244,8 +1263,8 @@ SELECT Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, System.DateTime Birthday, string Sex, string JobTitle, string AdditionalInformation, string Subdivision, int Original_Id, string Original_Name, System.DateTime Original_Birthday, string Original_Sex, string Original_JobTitle, string Original_AdditionalInformation, string Original_Subdivision) {
-            return this.Update(Original_Id, Name, Birthday, Sex, JobTitle, AdditionalInformation, Subdivision, Original_Id, Original_Name, Original_Birthday, Original_Sex, Original_JobTitle, Original_AdditionalInformation, Original_Subdivision);
+        public virtual int Update(string Name, global::System.Nullable<global::System.DateTime> Birthday, string Sex, string JobTitle, string Subdivision, int Original_Id, string Original_Name, global::System.Nullable<global::System.DateTime> Original_Birthday, string Original_Sex, string Original_JobTitle, string Original_Subdivision) {
+            return this.Update(Name, Birthday, Sex, JobTitle, Subdivision, Original_Id, Original_Name, Original_Birthday, Original_Sex, Original_JobTitle, Original_Subdivision, Original_Id);
         }
     }
     

@@ -69,7 +69,7 @@
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
-    <Compile Include="DataBase.cs" />
+    <Compile Include="DB\Connection.cs" />
     <Compile Include="DB\employeesDataSet.cs">
       <DependentUpon>employeesDataSet.xsd</DependentUpon>
     </Compile>
@@ -105,16 +105,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DB\employeesDataSet.xsc">
-      <DependentUpon>employeesDataSet.xsd</DependentUpon>
-    </None>
     <None Include="DB\employeesDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>employeesDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="DB\employeesDataSet.xss">
-      <DependentUpon>employeesDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

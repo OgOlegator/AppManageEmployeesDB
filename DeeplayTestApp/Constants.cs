@@ -15,5 +15,12 @@ namespace DeeplayTestApp
 
         public const string ModeUpdate = "Update row";
         public const string ModeAdd = "Add row";
+
+        public enum Mode
+        {
+            Create,
+            Change
+        }
     }
+
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 
-namespace DeeplayTestApp
+namespace DeeplayTestApp.DB
 {
-    public class DataBase
+    public class Connection
     {
         private SqlConnection _sqlConnection = new SqlConnection(ConfigurationManager
                 .ConnectionStrings["DeeplayTestApp.Properties.Settings.employeesConnectionString"].ConnectionString);

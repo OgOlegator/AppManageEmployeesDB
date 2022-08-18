@@ -8,7 +8,7 @@ namespace DeeplayTestApp
     {
         private void AddEmployee()
         {
-            CallAddForm(Constants.ModeAdd);
+            CallAddForm(Constants.Mode.Create);
         }
 
         private void ChangeEmployee()
@@ -18,10 +18,8 @@ namespace DeeplayTestApp
                 MessageBox.Show("Не выбрана строка для изменения");
                 return;
             }
-
-            var id = (int)dataGridView1.CurrentRow.Cells[0].Value;
             
-            CallAddForm(Constants.ModeUpdate, id);
+            CallAddForm(Constants.Mode.Change);
         }
 
         private void DeleteEmployee()
@@ -38,23 +36,34 @@ namespace DeeplayTestApp
             var rowDeleted = dataGridView1.SelectedRows[0];
             var id = Convert.ToInt32(rowDeleted.Cells[0].Value);
 
-            var command = new SqlCommand($"delete from [employees] where Id = {id}", DB.GetConnection());
+            var command = new SqlCommand($"delete from [employees] where Id = {id}", ConnectDB.GetConnection());
 
-            DB.OpenConnection();
-            command.ExecuteNonQuery();
-
-            employeesTableAdapter.Update(employeesDataSet.Employees);
-            employeesTableAdapter.UpdateCommand(employeesDataSet.Employees);
-
-            DB.CloseConnection();
+            UpdateDB(command);
         }
 
-        private void CallAddForm(string mode, int id = 0)
+        private void CallAddForm(Constants.Mode mode, DataGridViewRow dataRow = null)
+            => new AddForm(this, mode).ShowDialog();
+        
+
+        public void UpdateDB(SqlCommand command)
         {
-            var addForm = new AddForm(this, mode);
-            addForm.Owner = this;
-            addForm.ShowDialog();
+            if (ConnectDB == null)
+                return;
+
+            ConnectDB.OpenConnection();
+            command.ExecuteNonQuery();
+            employeesTableAdapter.UpdateCommand(employeesDataSet.Employees);
+            ConnectDB.CloseConnection();
         }
 
+        public void FillDB()
+        {
+            if (ConnectDB == null)
+                return;
+
+            ConnectDB.OpenConnection();
+            employeesTableAdapter.Fill(employeesDataSet.Employees);
+            ConnectDB.CloseConnection();
+        }
     }
 }
