@@ -52,7 +52,7 @@ namespace DeeplayTestApp
 
             ConnectDB.OpenConnection();
             command.ExecuteNonQuery();
-            employeesTableAdapter.UpdateCommand(employeesDataSet.Employees);
+            employeesTableAdapter.Fill(employeesDataSet.Employees);
             ConnectDB.CloseConnection();
         }
 

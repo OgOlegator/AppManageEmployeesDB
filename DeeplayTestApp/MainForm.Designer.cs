@@ -34,11 +34,11 @@ namespace DeeplayTestApp
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.employeesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.employeesDataSet = new DeeplayTestApp.DB.employeesDataSet();
             this.AddButton = new System.Windows.Forms.Button();
             this.ChangeButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
-            this.employeesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.employeesDataSet = new DeeplayTestApp.DB.employeesDataSet();
             this.employeesTableAdapter = new DeeplayTestApp.DB.employeesDataSetTableAdapters.EmployeesTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,6 +94,16 @@ namespace DeeplayTestApp
             this.dataGridView1.Size = new System.Drawing.Size(1205, 333);
             this.dataGridView1.TabIndex = 0;
             // 
+            // employeesBindingSource1
+            // 
+            this.employeesBindingSource1.DataMember = "Employees";
+            this.employeesBindingSource1.DataSource = this.employeesDataSet;
+            // 
+            // employeesDataSet
+            // 
+            this.employeesDataSet.DataSetName = "employeesDataSet";
+            this.employeesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // AddButton
             // 
             this.AddButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -130,16 +140,6 @@ namespace DeeplayTestApp
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
-            // employeesBindingSource1
-            // 
-            this.employeesBindingSource1.DataMember = "Employees";
-            this.employeesBindingSource1.DataSource = this.employeesDataSet;
-            // 
-            // employeesDataSet
-            // 
-            this.employeesDataSet.DataSetName = "employeesDataSet";
-            this.employeesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // employeesTableAdapter
             // 
             this.employeesTableAdapter.ClearBeforeFill = true;
@@ -158,37 +158,40 @@ namespace DeeplayTestApp
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "Имя";
+            this.nameDataGridViewTextBoxColumn.MaxInputLength = 50;
             this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Width = 125;
+            this.nameDataGridViewTextBoxColumn.Width = 150;
             // 
             // birthdayDataGridViewTextBoxColumn
             // 
             this.birthdayDataGridViewTextBoxColumn.DataPropertyName = "Birthday";
             this.birthdayDataGridViewTextBoxColumn.HeaderText = "Дата рождения";
+            this.birthdayDataGridViewTextBoxColumn.MaxInputLength = 10;
             this.birthdayDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.birthdayDataGridViewTextBoxColumn.Name = "birthdayDataGridViewTextBoxColumn";
             this.birthdayDataGridViewTextBoxColumn.ReadOnly = true;
-            this.birthdayDataGridViewTextBoxColumn.Width = 125;
             // 
             // sexDataGridViewTextBoxColumn
             // 
             this.sexDataGridViewTextBoxColumn.DataPropertyName = "Sex";
             this.sexDataGridViewTextBoxColumn.HeaderText = "Пол";
+            this.sexDataGridViewTextBoxColumn.MaxInputLength = 1;
             this.sexDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.sexDataGridViewTextBoxColumn.Name = "sexDataGridViewTextBoxColumn";
             this.sexDataGridViewTextBoxColumn.ReadOnly = true;
-            this.sexDataGridViewTextBoxColumn.Width = 125;
+            this.sexDataGridViewTextBoxColumn.Width = 70;
             // 
             // jobTitleDataGridViewTextBoxColumn
             // 
             this.jobTitleDataGridViewTextBoxColumn.DataPropertyName = "JobTitle";
             this.jobTitleDataGridViewTextBoxColumn.HeaderText = "Должность";
+            this.jobTitleDataGridViewTextBoxColumn.MaxInputLength = 30;
             this.jobTitleDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.jobTitleDataGridViewTextBoxColumn.Name = "jobTitleDataGridViewTextBoxColumn";
             this.jobTitleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.jobTitleDataGridViewTextBoxColumn.Width = 125;
+            this.jobTitleDataGridViewTextBoxColumn.Width = 200;
             // 
             // Subdivision
             // 
@@ -196,6 +199,7 @@ namespace DeeplayTestApp
             this.Subdivision.DataPropertyName = "Subdivision";
             this.Subdivision.FillWeight = 20F;
             this.Subdivision.HeaderText = "Подразделение";
+            this.Subdivision.MaxInputLength = 30;
             this.Subdivision.MinimumWidth = 6;
             this.Subdivision.Name = "Subdivision";
             this.Subdivision.ReadOnly = true;
@@ -204,10 +208,11 @@ namespace DeeplayTestApp
             // 
             this.AdditionalInfo.DataPropertyName = "AdditionalInfo";
             this.AdditionalInfo.HeaderText = "Доп. информация";
+            this.AdditionalInfo.MaxInputLength = 50;
             this.AdditionalInfo.MinimumWidth = 6;
             this.AdditionalInfo.Name = "AdditionalInfo";
             this.AdditionalInfo.ReadOnly = true;
-            this.AdditionalInfo.Width = 250;
+            this.AdditionalInfo.Width = 200;
             // 
             // MainForm
             // 

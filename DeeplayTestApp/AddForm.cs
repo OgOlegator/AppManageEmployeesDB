@@ -74,7 +74,7 @@ namespace DeeplayTestApp
         private void ClearFields()
         {
             textBoxName.Text = "";
-            birthdayPicker = null;
+            birthdayPicker.Value = DateTime.Today;
             comboBoxSex.Text = "";
             comboBoxJobTitle.Text = "";
             textBoxSubdivision.Text = "";
@@ -86,13 +86,7 @@ namespace DeeplayTestApp
                                          "VALUES (@Name, @Birthday, @Sex, @JobTitle, @Subdivision)",
                                          _mainForm.ConnectDB.GetConnection());
 
-            var date = birthdayPicker.Value.Date;
-
-            command.Parameters.AddWithValue("Name", textBoxName.Text);
-            command.Parameters.AddWithValue("Birthday", $"{date.Month}/{date.Day}/{date.Year}");
-            command.Parameters.AddWithValue("Sex", comboBoxSex.Text);
-            command.Parameters.AddWithValue("JobTitle", comboBoxJobTitle.Text);
-            command.Parameters.AddWithValue("Subdivision", textBoxSubdivision.Text);
+            SetValuesForSaveRow(ref command);
 
             return command;
         }
@@ -103,6 +97,13 @@ namespace DeeplayTestApp
                                                  "Subdivision = @Subdivision WHERE Id = @Id",
                                                  _mainForm.ConnectDB.GetConnection());
 
+            SetValuesForSaveRow(ref command);
+
+            return command;
+        }
+
+        private void SetValuesForSaveRow(ref SqlCommand command)
+        {
             var date = birthdayPicker.Value.Date;
 
             command.Parameters.AddWithValue("Name", textBoxName.Text);
@@ -111,8 +112,6 @@ namespace DeeplayTestApp
             command.Parameters.AddWithValue("JobTitle", comboBoxJobTitle.Text);
             command.Parameters.AddWithValue("Subdivision", textBoxSubdivision.Text);
             command.Parameters.AddWithValue("Id", _idChangeRow);
-
-            return command;
         }
     }
 }
