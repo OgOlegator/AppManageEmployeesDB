@@ -21,6 +21,13 @@ namespace DeeplayTestApp
             Create,
             Change
         }
+
+        public static object[] CollectJobTitle = {
+            "Директор",
+            "Руководитель",
+            "Контролер",
+            "Рабочий"
+        };
     }
 
 }
