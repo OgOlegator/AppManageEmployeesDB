@@ -41,29 +41,28 @@ namespace DeeplayTestApp
             UpdateDB(command);
         }
 
-        private void CallAddForm(Constants.Mode mode, DataGridViewRow dataRow = null)
+        private void CallAddForm(Constants.Mode mode)
             => new AddForm(this, mode).ShowDialog();
         
 
         public void UpdateDB(SqlCommand command)
         {
-            if (ConnectDB == null)
+            if (ConnectDB == null
+                && command == null
+                && command.Connection != ConnectDB.GetConnection())
                 return;
 
-            ConnectDB.OpenConnection();
-            command.ExecuteNonQuery();
-            employeesTableAdapter.Fill(employeesDataSet.Employees);
-            ConnectDB.CloseConnection();
-        }
+            try
+            {
+                ConnectDB.OpenConnection();
 
-        public void FillDB()
-        {
-            if (ConnectDB == null)
-                return;
-
-            ConnectDB.OpenConnection();
-            employeesTableAdapter.Fill(employeesDataSet.Employees);
-            ConnectDB.CloseConnection();
+                command.ExecuteNonQuery();
+                employeesTableAdapter.Fill(employeesDataSet.Employees);
+            }
+            finally
+            {
+                ConnectDB.CloseConnection();
+            }
         }
     }
 }

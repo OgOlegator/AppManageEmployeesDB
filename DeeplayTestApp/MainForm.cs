@@ -24,8 +24,12 @@ namespace DeeplayTestApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeesDataSet.Subdivision". При необходимости она может быть перемещена или удалена.
+            subdivisionTableAdapter.Fill(employeesDataSet.Subdivision);
+            employeesTableAdapter.Fill(employeesDataSet.Employees);
+            jobTitle1TableAdapter.Fill(employeesDataSet.JobTitle1);
+            
             ConnectDB = new Connection();
-            FillDB();
         }
 
         private void AddButton_Click(object sender, EventArgs e) => AddEmployee();
@@ -34,5 +38,22 @@ namespace DeeplayTestApp
 
         private void DeleteButton_Click(object sender, EventArgs e) => DeleteEmployee();
 
+        private void StartFilterButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClearFilterButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ConnectDB.OpenConnection();
+                employeesTableAdapter.Fill(employeesDataSet.Employees);
+            }
+            finally
+            {
+                ConnectDB.CloseConnection();
+            }
+        }
     }
 }

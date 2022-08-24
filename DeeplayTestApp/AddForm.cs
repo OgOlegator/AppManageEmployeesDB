@@ -17,7 +17,7 @@ namespace DeeplayTestApp
         private int _idChangeRow;
         private Constants.Mode _mode;
 
-        public AddForm(MainForm form, Constants.Mode mode)             //Конструктор для добавления строки
+        public AddForm(MainForm form, Constants.Mode mode)             
         {
             InitializeComponent();
             _mainForm = form;
@@ -64,6 +64,40 @@ namespace DeeplayTestApp
             _mainForm.UpdateDB(command);
 
             ClearFields();
+
+            SqlCommand GetCommandCreate()
+            {
+                command = new SqlCommand("INSERT INTO [employees] (Name, Birthday, Sex, JobTitle, Subdivision) " +
+                                             "VALUES (@Name, @Birthday, @Sex, @JobTitle, @Subdivision)",
+                                             _mainForm.ConnectDB.GetConnection());
+
+                SetValuesForCommand();
+
+                return command;
+            }
+
+            SqlCommand GetCommandUpdate()
+            {
+                command = new SqlCommand("UPDATE [employees] SET Name = @Name, Birthday = @Birthday, Sex = @Sex, JobTitle = @JobTitle, " +
+                                                     "Subdivision = @Subdivision WHERE Id = @Id",
+                                                     _mainForm.ConnectDB.GetConnection());
+
+                SetValuesForCommand();
+
+                return command;
+            }
+
+            void SetValuesForCommand()
+            {
+                var date = birthdayPicker.Value.Date;
+
+                command.Parameters.AddWithValue("Name", textBoxName.Text);
+                command.Parameters.AddWithValue("Birthday", $"{date.Month}/{date.Day}/{date.Year}");
+                command.Parameters.AddWithValue("Sex", comboBoxSex.Text);
+                command.Parameters.AddWithValue("JobTitle", comboBoxJobTitle.Text);
+                command.Parameters.AddWithValue("Subdivision", textBoxSubdivision.Text);
+                command.Parameters.AddWithValue("Id", _idChangeRow);
+            }
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -78,40 +112,6 @@ namespace DeeplayTestApp
             comboBoxSex.Text = "";
             comboBoxJobTitle.Text = "";
             textBoxSubdivision.Text = "";
-        }
-
-        private SqlCommand GetCommandCreate()
-        {
-            var command = new SqlCommand("INSERT INTO [employees] (Name, Birthday, Sex, JobTitle, Subdivision) " +
-                                         "VALUES (@Name, @Birthday, @Sex, @JobTitle, @Subdivision)",
-                                         _mainForm.ConnectDB.GetConnection());
-
-            SetValuesForSaveRow(ref command);
-
-            return command;
-        }
-
-        private SqlCommand GetCommandUpdate()
-        {
-            var command = new SqlCommand("UPDATE [employees] SET Name = @Name, Birthday = @Birthday, Sex = @Sex, JobTitle = @JobTitle, " +
-                                                 "Subdivision = @Subdivision WHERE Id = @Id",
-                                                 _mainForm.ConnectDB.GetConnection());
-
-            SetValuesForSaveRow(ref command);
-
-            return command;
-        }
-
-        private void SetValuesForSaveRow(ref SqlCommand command)
-        {
-            var date = birthdayPicker.Value.Date;
-
-            command.Parameters.AddWithValue("Name", textBoxName.Text);
-            command.Parameters.AddWithValue("Birthday", $"{date.Month}/{date.Day}/{date.Year}");
-            command.Parameters.AddWithValue("Sex", comboBoxSex.Text);
-            command.Parameters.AddWithValue("JobTitle", comboBoxJobTitle.Text);
-            command.Parameters.AddWithValue("Subdivision", textBoxSubdivision.Text);
-            command.Parameters.AddWithValue("Id", _idChangeRow);
         }
     }
 }

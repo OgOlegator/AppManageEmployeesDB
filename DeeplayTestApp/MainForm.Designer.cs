@@ -49,12 +49,20 @@ namespace DeeplayTestApp
             this.employeesTableAdapter = new DeeplayTestApp.DB.employeesDataSetTableAdapters.EmployeesTableAdapter();
             this.comboBoxSubDivision = new System.Windows.Forms.ComboBox();
             this.comboBoxJobTitle = new System.Windows.Forms.ComboBox();
+            this.jobTitle1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelJobTitle = new System.Windows.Forms.Label();
             this.labelFilterSubdivision = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.jobTitle1TableAdapter = new DeeplayTestApp.DB.employeesDataSetTableAdapters.JobTitle1TableAdapter();
+            this.subdivisionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.subdivisionTableAdapter = new DeeplayTestApp.DB.employeesDataSetTableAdapters.SubdivisionTableAdapter();
+            this.StartFilterButton = new System.Windows.Forms.Button();
+            this.ClearFilterButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobTitle1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.subdivisionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -87,7 +95,7 @@ namespace DeeplayTestApp
             this.dataGridView1.DataSource = this.employeesBindingSource1;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveBorder;
             this.dataGridView1.Location = new System.Drawing.Point(6, 71);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -183,8 +191,8 @@ namespace DeeplayTestApp
             // AddButton
             // 
             this.AddButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.AddButton.Location = new System.Drawing.Point(283, 456);
-            this.AddButton.Margin = new System.Windows.Forms.Padding(4);
+            this.AddButton.Location = new System.Drawing.Point(282, 456);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(208, 45);
             this.AddButton.TabIndex = 1;
@@ -195,8 +203,8 @@ namespace DeeplayTestApp
             // ChangeButton
             // 
             this.ChangeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ChangeButton.Location = new System.Drawing.Point(507, 456);
-            this.ChangeButton.Margin = new System.Windows.Forms.Padding(4);
+            this.ChangeButton.Location = new System.Drawing.Point(508, 456);
+            this.ChangeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ChangeButton.Name = "ChangeButton";
             this.ChangeButton.Size = new System.Drawing.Size(214, 45);
             this.ChangeButton.TabIndex = 2;
@@ -208,7 +216,7 @@ namespace DeeplayTestApp
             // 
             this.DeleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.DeleteButton.Location = new System.Drawing.Point(734, 456);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(214, 45);
             this.DeleteButton.TabIndex = 3;
@@ -224,8 +232,11 @@ namespace DeeplayTestApp
             // 
             this.comboBoxSubDivision.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBoxSubDivision.DataSource = this.subdivisionBindingSource;
+            this.comboBoxSubDivision.DisplayMember = "Name";
             this.comboBoxSubDivision.FormattingEnabled = true;
-            this.comboBoxSubDivision.Location = new System.Drawing.Point(531, 36);
+            this.comboBoxSubDivision.Location = new System.Drawing.Point(520, 36);
+            this.comboBoxSubDivision.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.comboBoxSubDivision.Name = "comboBoxSubDivision";
             this.comboBoxSubDivision.Size = new System.Drawing.Size(260, 28);
             this.comboBoxSubDivision.TabIndex = 4;
@@ -234,11 +245,19 @@ namespace DeeplayTestApp
             // 
             this.comboBoxJobTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBoxJobTitle.DataSource = this.jobTitle1BindingSource;
+            this.comboBoxJobTitle.DisplayMember = "Name";
             this.comboBoxJobTitle.FormattingEnabled = true;
-            this.comboBoxJobTitle.Location = new System.Drawing.Point(117, 36);
+            this.comboBoxJobTitle.Location = new System.Drawing.Point(105, 36);
+            this.comboBoxJobTitle.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.comboBoxJobTitle.Name = "comboBoxJobTitle";
             this.comboBoxJobTitle.Size = new System.Drawing.Size(260, 28);
             this.comboBoxJobTitle.TabIndex = 5;
+            // 
+            // jobTitle1BindingSource
+            // 
+            this.jobTitle1BindingSource.DataMember = "JobTitle1";
+            this.jobTitle1BindingSource.DataSource = this.employeesDataSet;
             // 
             // labelJobTitle
             // 
@@ -246,6 +265,7 @@ namespace DeeplayTestApp
             | System.Windows.Forms.AnchorStyles.Left)));
             this.labelJobTitle.AutoSize = true;
             this.labelJobTitle.Location = new System.Drawing.Point(8, 39);
+            this.labelJobTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelJobTitle.Name = "labelJobTitle";
             this.labelJobTitle.Size = new System.Drawing.Size(103, 20);
             this.labelJobTitle.TabIndex = 6;
@@ -257,6 +277,7 @@ namespace DeeplayTestApp
             | System.Windows.Forms.AnchorStyles.Left)));
             this.labelFilterSubdivision.AutoSize = true;
             this.labelFilterSubdivision.Location = new System.Drawing.Point(380, 39);
+            this.labelFilterSubdivision.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelFilterSubdivision.Name = "labelFilterSubdivision";
             this.labelFilterSubdivision.Size = new System.Drawing.Size(145, 20);
             this.labelFilterSubdivision.TabIndex = 7;
@@ -269,28 +290,68 @@ namespace DeeplayTestApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 9);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 20);
             this.label3.TabIndex = 8;
             this.label3.Text = "Фильтры:";
+            // 
+            // jobTitle1TableAdapter
+            // 
+            this.jobTitle1TableAdapter.ClearBeforeFill = true;
+            // 
+            // subdivisionBindingSource
+            // 
+            this.subdivisionBindingSource.DataMember = "Subdivision";
+            this.subdivisionBindingSource.DataSource = this.employeesDataSet;
+            // 
+            // subdivisionTableAdapter
+            // 
+            this.subdivisionTableAdapter.ClearBeforeFill = true;
+            // 
+            // StartFilterButton
+            // 
+            this.StartFilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StartFilterButton.Location = new System.Drawing.Point(932, 30);
+            this.StartFilterButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.StartFilterButton.Name = "StartFilterButton";
+            this.StartFilterButton.Size = new System.Drawing.Size(176, 34);
+            this.StartFilterButton.TabIndex = 9;
+            this.StartFilterButton.Text = "Применить";
+            this.StartFilterButton.UseVisualStyleBackColor = true;
+            this.StartFilterButton.Click += new System.EventHandler(this.StartFilterButton_Click);
+            // 
+            // ClearFilterButton
+            // 
+            this.ClearFilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClearFilterButton.Location = new System.Drawing.Point(1115, 30);
+            this.ClearFilterButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ClearFilterButton.Name = "ClearFilterButton";
+            this.ClearFilterButton.Size = new System.Drawing.Size(176, 34);
+            this.ClearFilterButton.TabIndex = 10;
+            this.ClearFilterButton.Text = "Очистить фильтр";
+            this.ClearFilterButton.UseVisualStyleBackColor = true;
+            this.ClearFilterButton.Click += new System.EventHandler(this.ClearFilterButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1306, 514);
+            this.Controls.Add(this.ClearFilterButton);
+            this.Controls.Add(this.StartFilterButton);
+            this.Controls.Add(this.comboBoxJobTitle);
+            this.Controls.Add(this.comboBoxSubDivision);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.labelFilterSubdivision);
             this.Controls.Add(this.labelJobTitle);
-            this.Controls.Add(this.comboBoxJobTitle);
-            this.Controls.Add(this.comboBoxSubDivision);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.ChangeButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.Text = "Сотрудники";
@@ -298,6 +359,8 @@ namespace DeeplayTestApp
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobTitle1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.subdivisionBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,11 +382,17 @@ namespace DeeplayTestApp
         private System.Windows.Forms.DataGridViewTextBoxColumn jobTitleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Subdivision;
         private System.Windows.Forms.DataGridViewTextBoxColumn AdditionalInfo;
-        private System.Windows.Forms.ComboBox comboBoxSubDivision;
-        private System.Windows.Forms.ComboBox comboBoxJobTitle;
         private System.Windows.Forms.Label labelJobTitle;
         private System.Windows.Forms.Label labelFilterSubdivision;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.BindingSource jobTitle1BindingSource;
+        private DB.employeesDataSetTableAdapters.JobTitle1TableAdapter jobTitle1TableAdapter;
+        private System.Windows.Forms.BindingSource subdivisionBindingSource;
+        private DB.employeesDataSetTableAdapters.SubdivisionTableAdapter subdivisionTableAdapter;
+        public System.Windows.Forms.ComboBox comboBoxSubDivision;
+        public System.Windows.Forms.ComboBox comboBoxJobTitle;
+        private System.Windows.Forms.Button StartFilterButton;
+        private System.Windows.Forms.Button ClearFilterButton;
     }
 }
 
