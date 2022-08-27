@@ -39,21 +39,9 @@ namespace DeeplayTestApp
         private void DeleteButton_Click(object sender, EventArgs e) => DeleteEmployee();
 
         private void StartFilterButton_Click(object sender, EventArgs e)
-        {
-
-        }
+            => employeesTableAdapter.AddFilterWithDgv(employeesDataSet.Employees, comboBoxSubDivision.Text, comboBoxJobTitle.Text);
 
         private void ClearFilterButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ConnectDB.OpenConnection();
-                employeesTableAdapter.Fill(employeesDataSet.Employees);
-            }
-            finally
-            {
-                ConnectDB.CloseConnection();
-            }
-        }
+            => employeesTableAdapter.Fill(employeesDataSet.Employees);
     }
 }

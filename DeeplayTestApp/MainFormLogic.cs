@@ -36,33 +36,12 @@ namespace DeeplayTestApp
             var rowDeleted = dataGridView1.SelectedRows[0];
             var id = Convert.ToInt32(rowDeleted.Cells[0].Value);
 
-            var command = new SqlCommand($"delete from [employees] where Id = {id}", ConnectDB.GetConnection());
-
-            UpdateDB(command);
+            employeesTableAdapter.DeleteQuery(id);
+            employeesTableAdapter.Fill(employeesDataSet.Employees);
         }
 
         private void CallAddForm(Constants.Mode mode)
             => new AddForm(this, mode).ShowDialog();
         
-
-        public void UpdateDB(SqlCommand command)
-        {
-            if (ConnectDB == null
-                && command == null
-                && command.Connection != ConnectDB.GetConnection())
-                return;
-
-            try
-            {
-                ConnectDB.OpenConnection();
-
-                command.ExecuteNonQuery();
-                employeesTableAdapter.Fill(employeesDataSet.Employees);
-            }
-            finally
-            {
-                ConnectDB.CloseConnection();
-            }
-        }
     }
 }

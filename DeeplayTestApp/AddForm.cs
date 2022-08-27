@@ -45,59 +45,27 @@ namespace DeeplayTestApp
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            SqlCommand command = null;
-
             switch(_mode)
             {
                 case Constants.Mode.Create:
                     {
-                        command = GetCommandCreate();
+                        _mainForm.employeesTableAdapter.Insert(textBoxName.Text, birthdayPicker.Value.Date,
+                                                               comboBoxSex.Text, comboBoxJobTitle.Text,
+                                                               textBoxSubdivision.Text);
                         break;
                     }
                 case Constants.Mode.Change:
                     {
-                        command = GetCommandUpdate();
+                        _mainForm.employeesTableAdapter.UpdateQuery(textBoxName.Text, birthdayPicker.Value.Date.ToString(),
+                                                               comboBoxSex.Text, comboBoxJobTitle.Text,
+                                                               textBoxSubdivision.Text, _idChangeRow);
                         break;
                     }
             }
 
-            _mainForm.UpdateDB(command);
+            _mainForm.employeesTableAdapter.Fill(_mainForm.employeesDataSet.Employees);
 
             ClearFields();
-
-            SqlCommand GetCommandCreate()
-            {
-                command = new SqlCommand("INSERT INTO [employees] (Name, Birthday, Sex, JobTitle, Subdivision) " +
-                                             "VALUES (@Name, @Birthday, @Sex, @JobTitle, @Subdivision)",
-                                             _mainForm.ConnectDB.GetConnection());
-
-                SetValuesForCommand();
-
-                return command;
-            }
-
-            SqlCommand GetCommandUpdate()
-            {
-                command = new SqlCommand("UPDATE [employees] SET Name = @Name, Birthday = @Birthday, Sex = @Sex, JobTitle = @JobTitle, " +
-                                                     "Subdivision = @Subdivision WHERE Id = @Id",
-                                                     _mainForm.ConnectDB.GetConnection());
-
-                SetValuesForCommand();
-
-                return command;
-            }
-
-            void SetValuesForCommand()
-            {
-                var date = birthdayPicker.Value.Date;
-
-                command.Parameters.AddWithValue("Name", textBoxName.Text);
-                command.Parameters.AddWithValue("Birthday", $"{date.Month}/{date.Day}/{date.Year}");
-                command.Parameters.AddWithValue("Sex", comboBoxSex.Text);
-                command.Parameters.AddWithValue("JobTitle", comboBoxJobTitle.Text);
-                command.Parameters.AddWithValue("Subdivision", textBoxSubdivision.Text);
-                command.Parameters.AddWithValue("Id", _idChangeRow);
-            }
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
