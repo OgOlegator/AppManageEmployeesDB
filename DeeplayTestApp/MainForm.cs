@@ -33,7 +33,7 @@ namespace DeeplayTestApp
             _directorySubDivision = new SubDivisionDirectory();
 
             var listJobTitles = _directoryJobTitles.GetJobTitles();
-            var listSubDivisions = _directorySubDivision.GetDirectorySubDivison();
+            var listSubDivisions = _directorySubDivision.GetSubDivisions();
 
             listJobTitles.Add(Constants.FilterAllValues);
             listSubDivisions.Add(Constants.FilterAllValues);
@@ -50,15 +50,22 @@ namespace DeeplayTestApp
 
         private void StartFilterButton_Click(object sender, EventArgs e)
         {
-            if (comboBoxSubDivision.Text != Constants.FilterAllValues &&
-                comboBoxJobTitle.Text != Constants.FilterAllValues)
+            if (CheckField(comboBoxSubDivision.Text) &&
+                CheckField(comboBoxJobTitle.Text))
                 employeesTableAdapter.AddAllFilterForDgv(employeesDataSet.Employees, comboBoxSubDivision.Text, comboBoxJobTitle.Text);
 
-            else if (comboBoxSubDivision.Text == Constants.FilterAllValues)
+            else if (!CheckField(comboBoxSubDivision.Text) &&
+                     !CheckField(comboBoxJobTitle.Text))
+                employeesTableAdapter.Fill(employeesDataSet.Employees);
+
+            else if (!CheckField(comboBoxSubDivision.Text))
                 employeesTableAdapter.AddJobTitleFilterForDgv(employeesDataSet.Employees, comboBoxJobTitle.Text);
 
-            else if (comboBoxJobTitle.Text == Constants.FilterAllValues)
+            else if (!CheckField(comboBoxJobTitle.Text))
                 employeesTableAdapter.AddSubDivisionFilterForDgv(employeesDataSet.Employees, comboBoxSubDivision.Text);
+
+            bool CheckField(string field)
+                => field != Constants.FilterAllValues && field != string.Empty;
         }
 
         private void ClearFilterButton_Click(object sender, EventArgs e)

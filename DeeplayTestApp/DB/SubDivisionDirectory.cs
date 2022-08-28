@@ -9,7 +9,12 @@ namespace DeeplayTestApp.DB
 {
     public class SubDivisionDirectory
     {
-        private List<string> _directorySubDivision;
+        private List<StrucSubDivision> _directorySubDivision;
+
+        public struct StrucSubDivision
+        {
+            public string Name;
+        }
 
         private employeesDataSetTableAdapters.SubdivisionTableAdapter _subDivisionTableAdapter
             = new employeesDataSetTableAdapters.SubdivisionTableAdapter();
@@ -17,7 +22,7 @@ namespace DeeplayTestApp.DB
         public SubDivisionDirectory()
         { }
 
-        public List<string> GetDirectorySubDivison()
+        public List<StrucSubDivision> GetDirectorySubDivison()
         {
             if (_directorySubDivision == null)
                 SetDirectorySubDivision();
@@ -25,15 +30,18 @@ namespace DeeplayTestApp.DB
             return _directorySubDivision;
         }
 
+        public List<string> GetSubDivisions()
+            => GetDirectorySubDivison().Select(x => x.Name).ToList();
+
         private void SetDirectorySubDivision()
         {
-            _directorySubDivision = new List<string>();
+            _directorySubDivision = new List<StrucSubDivision>();
 
             var subDivisionDbData = _subDivisionTableAdapter.GetData();
 
             foreach (DataRow subDivision in subDivisionDbData.Rows)
             {
-                _directorySubDivision.Add(subDivision.ItemArray[0].ToString());
+                _directorySubDivision.Add(new StrucSubDivision { Name = subDivision.ItemArray[0].ToString() });
             }
         }
     }

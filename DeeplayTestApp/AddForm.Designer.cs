@@ -37,10 +37,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxSubdivision = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
+            this.comboBoxSubDivision = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +49,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.comboBoxSubDivision);
             this.groupBox1.Controls.Add(this.birthdayPicker);
             this.groupBox1.Controls.Add(this.comboBoxSex);
             this.groupBox1.Controls.Add(this.comboBoxJobTitle);
@@ -57,7 +58,6 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBoxSubdivision);
             this.groupBox1.Controls.Add(this.textBoxName);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -157,18 +157,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "ФИО";
             // 
-            // textBoxSubdivision
-            // 
-            this.textBoxSubdivision.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSubdivision.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSubdivision.Location = new System.Drawing.Point(186, 181);
-            this.textBoxSubdivision.MaxLength = 30;
-            this.textBoxSubdivision.Name = "textBoxSubdivision";
-            this.textBoxSubdivision.Size = new System.Drawing.Size(433, 27);
-            this.textBoxSubdivision.TabIndex = 4;
-            // 
             // textBoxName
             // 
             this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -205,6 +193,14 @@
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
+            // comboBoxSubDivision
+            // 
+            this.comboBoxSubDivision.FormattingEnabled = true;
+            this.comboBoxSubDivision.Location = new System.Drawing.Point(186, 181);
+            this.comboBoxSubDivision.Name = "comboBoxSubDivision";
+            this.comboBoxSubDivision.Size = new System.Drawing.Size(433, 28);
+            this.comboBoxSubDivision.TabIndex = 12;
+            // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -229,12 +225,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxSubdivision;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.ComboBox comboBoxSex;
         private System.Windows.Forms.ComboBox comboBoxJobTitle;
         private System.Windows.Forms.DateTimePicker birthdayPicker;
+        private System.Windows.Forms.ComboBox comboBoxSubDivision;
     }
 }

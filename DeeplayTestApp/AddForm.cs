@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using DeeplayTestApp.DB;
 
 namespace DeeplayTestApp
 {
@@ -22,6 +16,8 @@ namespace DeeplayTestApp
             InitializeComponent();
             _mainForm = form;
             _mode = mode;
+
+            SetComboBoxFieldsFromDb();
 
             if (_mode == Constants.Mode.Change)
             {
@@ -39,7 +35,7 @@ namespace DeeplayTestApp
                 birthdayPicker.Value = (DateTime)dataRow.Cells[2].Value;
                 comboBoxSex.Text = (string)dataRow.Cells[3].Value;
                 comboBoxJobTitle.Text = (string)dataRow.Cells[4].Value;
-                textBoxSubdivision.Text = (string)dataRow.Cells[5].Value;
+                comboBoxSubDivision.Text = (string)dataRow.Cells[5].Value;
             }
         }
 
@@ -51,14 +47,14 @@ namespace DeeplayTestApp
                     {
                         _mainForm.employeesTableAdapter.Insert(textBoxName.Text, birthdayPicker.Value.Date,
                                                                comboBoxSex.Text, comboBoxJobTitle.Text,
-                                                               textBoxSubdivision.Text);
+                                                               comboBoxSubDivision.Text);
                         break;
                     }
                 case Constants.Mode.Change:
                     {
                         _mainForm.employeesTableAdapter.UpdateQuery(textBoxName.Text, birthdayPicker.Value.Date.ToString(),
                                                                comboBoxSex.Text, comboBoxJobTitle.Text,
-                                                               textBoxSubdivision.Text, _idChangeRow);
+                                                               comboBoxSubDivision.Text, _idChangeRow);
                         break;
                     }
             }
@@ -79,7 +75,17 @@ namespace DeeplayTestApp
             birthdayPicker.Value = DateTime.Today;
             comboBoxSex.Text = "";
             comboBoxJobTitle.Text = "";
-            textBoxSubdivision.Text = "";
+            comboBoxSubDivision.Text = "";
+        }
+
+        private void SetComboBoxFieldsFromDb()
+        {
+            //Заполнение значений выпадающих списков из справочников
+            var directoryJobTitles = new JobTitleDirectory();
+            var directorySubDivision = new SubDivisionDirectory();
+
+            comboBoxJobTitle.Items.AddRange(directoryJobTitles.GetJobTitles().ToArray());
+            comboBoxSubDivision.Items.AddRange(directorySubDivision.GetSubDivisions().ToArray());
         }
     }
 }
