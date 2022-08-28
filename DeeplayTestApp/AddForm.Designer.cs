@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBoxSubDivision = new System.Windows.Forms.ComboBox();
             this.birthdayPicker = new System.Windows.Forms.DateTimePicker();
             this.comboBoxSex = new System.Windows.Forms.ComboBox();
             this.comboBoxJobTitle = new System.Windows.Forms.ComboBox();
@@ -40,7 +41,6 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
-            this.comboBoxSubDivision = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,8 +67,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Добавить сотрудника";
             // 
+            // comboBoxSubDivision
+            // 
+            this.comboBoxSubDivision.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSubDivision.FormattingEnabled = true;
+            this.comboBoxSubDivision.Location = new System.Drawing.Point(186, 181);
+            this.comboBoxSubDivision.Name = "comboBoxSubDivision";
+            this.comboBoxSubDivision.Size = new System.Drawing.Size(433, 28);
+            this.comboBoxSubDivision.TabIndex = 12;
+            // 
             // birthdayPicker
             // 
+            this.birthdayPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.birthdayPicker.Checked = false;
             this.birthdayPicker.Location = new System.Drawing.Point(186, 80);
             this.birthdayPicker.Name = "birthdayPicker";
@@ -192,14 +206,6 @@
             this.CloseButton.Text = "Закрыть";
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
-            // 
-            // comboBoxSubDivision
-            // 
-            this.comboBoxSubDivision.FormattingEnabled = true;
-            this.comboBoxSubDivision.Location = new System.Drawing.Point(186, 181);
-            this.comboBoxSubDivision.Name = "comboBoxSubDivision";
-            this.comboBoxSubDivision.Size = new System.Drawing.Size(433, 28);
-            this.comboBoxSubDivision.TabIndex = 12;
             // 
             // AddForm
             // 
