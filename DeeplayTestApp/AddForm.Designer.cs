@@ -110,11 +110,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxJobTitle.FormattingEnabled = true;
-            this.comboBoxJobTitle.Items.AddRange(new object[] {
-            "Директор",
-            "Руководитель",
-            "Контролер",
-            "Рабочий"});
             this.comboBoxJobTitle.Location = new System.Drawing.Point(186, 147);
             this.comboBoxJobTitle.MaxLength = 30;
             this.comboBoxJobTitle.Name = "comboBoxJobTitle";

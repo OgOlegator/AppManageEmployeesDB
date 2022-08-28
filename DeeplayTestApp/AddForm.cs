@@ -71,11 +71,11 @@ namespace DeeplayTestApp
 
         private void ClearFields()
         {
-            textBoxName.Text = "";
+            textBoxName.Text = string.Empty;
             birthdayPicker.Value = DateTime.Today;
-            comboBoxSex.Text = "";
-            comboBoxJobTitle.Text = "";
-            comboBoxSubDivision.Text = "";
+            comboBoxSex.Text = string.Empty;
+            comboBoxJobTitle.Text = string.Empty;
+            comboBoxSubDivision.Text = string.Empty;
         }
 
         private void SetComboBoxFieldsFromDb()

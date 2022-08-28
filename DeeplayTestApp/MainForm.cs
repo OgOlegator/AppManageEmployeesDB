@@ -69,6 +69,10 @@ namespace DeeplayTestApp
         }
 
         private void ClearFilterButton_Click(object sender, EventArgs e)
-            => employeesTableAdapter.Fill(employeesDataSet.Employees);
+        {
+            comboBoxJobTitle.Text = string.Empty;
+            comboBoxSubDivision.Text = string.Empty;
+            employeesTableAdapter.Fill(employeesDataSet.Employees);
+        }
     }
 }
