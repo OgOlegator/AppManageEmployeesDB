@@ -39,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxSubdivision = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -97,7 +96,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxJobTitle.FormattingEnabled = true;
-            this.comboBoxJobTitle.Items.AddRange(Constants.CollectJobTitle);
+            this.comboBoxJobTitle.Items.AddRange(new object[] {
+            "Директор",
+            "Руководитель",
+            "Контролер",
+            "Рабочий"});
             this.comboBoxJobTitle.Location = new System.Drawing.Point(186, 147);
             this.comboBoxJobTitle.MaxLength = 30;
             this.comboBoxJobTitle.Name = "comboBoxJobTitle";
@@ -228,7 +231,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxSubdivision;
         private System.Windows.Forms.TextBox textBoxName;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.ComboBox comboBoxSex;

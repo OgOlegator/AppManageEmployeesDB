@@ -1775,7 +1775,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE WHEN JobTitle = 'Р�
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE WHEN JobTitle = \'Руко" +
@@ -1792,20 +1792,34 @@ SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE WHEN JobTitle = 'Р�
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JobTitle", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "JobTitle", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "DELETE FROM Employees\r\nWHERE  (Id = @Original_Id)";
+            this._commandCollection[2].CommandText = "SELECT CASE WHEN JobTitle = \'Руководитель\' THEN Subdivision ELSE JobTitle END AS " +
+                "AdditionalInfo, Birthday, Id, JobTitle, Name, Sex, Subdivision\r\nFROM Employees \r" +
+                "\nWHERE JobTitle = @JobTitle";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JobTitle", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "JobTitle", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "UPDATE [Employees] SET [Name] = @Name, [Birthday] = @Birthday, [Sex] = @Sex, [Job" +
-                "Title] = @JobTitle, [Subdivision] = @Subdivision WHERE [Id] = @Original_Id";
+            this._commandCollection[3].CommandText = "SELECT CASE WHEN JobTitle = \'Руководитель\' THEN Subdivision ELSE JobTitle END AS " +
+                "AdditionalInfo, Birthday, Id, JobTitle, Name, Sex, Subdivision \r\nFROM Employees " +
+                "\r\nWHERE Subdivision = @Subdivision";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Birthday", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Birthday", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sex", global::System.Data.SqlDbType.NChar, 1, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JobTitle", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "JobTitle", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Subdivision", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Subdivision", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "DELETE FROM Employees\r\nWHERE  (Id = @Original_Id)";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "UPDATE [Employees] SET [Name] = @Name, [Birthday] = @Birthday, [Sex] = @Sex, [Job" +
+                "Title] = @JobTitle, [Subdivision] = @Subdivision WHERE [Id] = @Original_Id";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Birthday", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Birthday", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sex", global::System.Data.SqlDbType.NChar, 1, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JobTitle", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "JobTitle", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Subdivision", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Subdivision", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1836,7 +1850,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE WHEN JobTitle = 'Р�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int AddFilterWithDgv(employeesDataSet.EmployeesDataTable dataTable, string Subdivision, string JobTitle) {
+        public virtual int AddAllFilterForDgv(employeesDataSet.EmployeesDataTable dataTable, string Subdivision, string JobTitle) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((Subdivision == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -1861,7 +1875,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE WHEN JobTitle = 'Р�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual employeesDataSet.EmployeesDataTable GetDataWithFilter(string Subdivision, string JobTitle) {
+        public virtual employeesDataSet.EmployeesDataTable GetDataWithAllFilter(string Subdivision, string JobTitle) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((Subdivision == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -1874,6 +1888,78 @@ SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE WHEN JobTitle = 'Р�
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(JobTitle));
+            }
+            employeesDataSet.EmployeesDataTable dataTable = new employeesDataSet.EmployeesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int AddJobTitleFilterForDgv(employeesDataSet.EmployeesDataTable dataTable, string JobTitle) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((JobTitle == null)) {
+                throw new global::System.ArgumentNullException("JobTitle");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(JobTitle));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual employeesDataSet.EmployeesDataTable GetDataWithJobTitleFilter(string JobTitle) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((JobTitle == null)) {
+                throw new global::System.ArgumentNullException("JobTitle");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(JobTitle));
+            }
+            employeesDataSet.EmployeesDataTable dataTable = new employeesDataSet.EmployeesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int AddSubDivisionFilterForDgv(employeesDataSet.EmployeesDataTable dataTable, string Subdivision) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((Subdivision == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Subdivision));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual employeesDataSet.EmployeesDataTable GetDataWithSubDivisonFilter(string Subdivision) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((Subdivision == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Subdivision));
             }
             employeesDataSet.EmployeesDataTable dataTable = new employeesDataSet.EmployeesDataTable();
             this.Adapter.Fill(dataTable);
@@ -2120,7 +2206,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE WHEN JobTitle = 'Р�
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
         public virtual int DeleteQuery(int Original_Id) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             command.Parameters[0].Value = ((int)(Original_Id));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2144,7 +2230,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE WHEN JobTitle = 'Р�
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateQuery(string Name, string Birthday, string Sex, string JobTitle, string Subdivision, int Original_Id) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }

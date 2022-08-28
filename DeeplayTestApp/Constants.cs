@@ -16,18 +16,13 @@ namespace DeeplayTestApp
         public const string ModeUpdate = "Update row";
         public const string ModeAdd = "Add row";
 
+        public const string FilterAllValues = "Все";
+
         public enum Mode
         {
             Create,
             Change
         }
-
-        public static object[] CollectJobTitle = {
-            "Директор",
-            "Руководитель",
-            "Контролер",
-            "Рабочий"
-        };
     }
 
 }

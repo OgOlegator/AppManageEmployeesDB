@@ -69,7 +69,6 @@
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
-    <Compile Include="DB\Connection.cs" />
     <Compile Include="DB\employeesDataSet.cs">
       <DependentUpon>employeesDataSet.xsd</DependentUpon>
     </Compile>
@@ -78,6 +77,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>employeesDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DB\JobTitleDirectory.cs" />
+    <Compile Include="DB\SubDivisionDirectory.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

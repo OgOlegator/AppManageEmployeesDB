@@ -15,7 +15,8 @@ namespace DeeplayTestApp
 {
     public partial class MainForm : Form
     {
-        public Connection ConnectDB;
+        private JobTitleDirectory _directoryJobTitles;
+        private SubDivisionDirectory _directorySubDivision;
 
         public MainForm()
         {
@@ -24,12 +25,21 @@ namespace DeeplayTestApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeesDataSet.Subdivision". При необходимости она может быть перемещена или удалена.
-            subdivisionTableAdapter.Fill(employeesDataSet.Subdivision);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeesDataSet.Employees". При необходимости она может быть перемещена или удалена.
             employeesTableAdapter.Fill(employeesDataSet.Employees);
-            jobTitle1TableAdapter.Fill(employeesDataSet.JobTitle1);
-            
-            ConnectDB = new Connection();
+
+            //Заполнение значений выпадающих списков из справочников
+            _directoryJobTitles = new JobTitleDirectory();
+            _directorySubDivision = new SubDivisionDirectory();
+
+            var listJobTitles = _directoryJobTitles.GetJobTitles();
+            var listSubDivisions = _directorySubDivision.GetDirectorySubDivison();
+
+            listJobTitles.Add(Constants.FilterAllValues);
+            listSubDivisions.Add(Constants.FilterAllValues);
+
+            comboBoxJobTitle.Items.AddRange(listJobTitles.ToArray());
+            comboBoxSubDivision.Items.AddRange(listSubDivisions.ToArray());
         }
 
         private void AddButton_Click(object sender, EventArgs e) => AddEmployee();
@@ -39,7 +49,17 @@ namespace DeeplayTestApp
         private void DeleteButton_Click(object sender, EventArgs e) => DeleteEmployee();
 
         private void StartFilterButton_Click(object sender, EventArgs e)
-            => employeesTableAdapter.AddFilterWithDgv(employeesDataSet.Employees, comboBoxSubDivision.Text, comboBoxJobTitle.Text);
+        {
+            if (comboBoxSubDivision.Text != Constants.FilterAllValues &&
+                comboBoxJobTitle.Text != Constants.FilterAllValues)
+                employeesTableAdapter.AddAllFilterForDgv(employeesDataSet.Employees, comboBoxSubDivision.Text, comboBoxJobTitle.Text);
+
+            else if (comboBoxSubDivision.Text == Constants.FilterAllValues)
+                employeesTableAdapter.AddJobTitleFilterForDgv(employeesDataSet.Employees, comboBoxJobTitle.Text);
+
+            else if (comboBoxJobTitle.Text == Constants.FilterAllValues)
+                employeesTableAdapter.AddSubDivisionFilterForDgv(employeesDataSet.Employees, comboBoxSubDivision.Text);
+        }
 
         private void ClearFilterButton_Click(object sender, EventArgs e)
             => employeesTableAdapter.Fill(employeesDataSet.Employees);
