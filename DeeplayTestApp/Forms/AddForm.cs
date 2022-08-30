@@ -7,9 +7,9 @@ namespace DeeplayTestApp.Forms
 {
     public partial class AddForm : Form
     {
-        private MainForm _mainForm;
-        private int _idChangeRow;
-        private Constants.Mode _mode;
+        private readonly MainForm _mainForm;
+        private readonly int _idChangeRow;
+        private readonly Constants.Mode _mode;
 
         public AddForm(MainForm form, Constants.Mode mode)             
         {
@@ -41,7 +41,13 @@ namespace DeeplayTestApp.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            switch(_mode)
+            if (!CheckFields())     //Проверка заполненности полей
+                return;
+
+            if (!CheckJobTitles())  //Проверка на наличие сотрудников в должности Руководитель(для конкретного отдела) и Директор(для всей компании)
+                return;
+
+            switch (_mode)
             {
                 case Constants.Mode.Create:
                     {
@@ -81,11 +87,71 @@ namespace DeeplayTestApp.Forms
         private void SetComboBoxFieldsFromDb()
         {
             //Заполнение значений выпадающих списков из справочников
-            var directoryJobTitles = new JobTitleDirectory();
-            var directorySubDivision = new SubDivisionDirectory();
+            comboBoxJobTitle.Items.AddRange(_mainForm.DirectoryJobTitles.GetJobTitles().ToArray());
+            comboBoxSubDivision.Items.AddRange(_mainForm.DirectorySubDivision.GetSubDivisions().ToArray());
+        }
 
-            comboBoxJobTitle.Items.AddRange(directoryJobTitles.GetJobTitles().ToArray());
-            comboBoxSubDivision.Items.AddRange(directorySubDivision.GetSubDivisions().ToArray());
+        private bool CheckFields()
+        {
+            var message = "Не заполнены поля:";
+            var statusCheck = true;
+
+            if (string.IsNullOrEmpty(textBoxName.Text))
+            { 
+                message += "\n- ФИО";
+                statusCheck = false;
+            }
+            if(string.IsNullOrEmpty(comboBoxSex.Text))
+            { 
+                message += "\n- Пол";
+                statusCheck = false;
+            }
+            if (string.IsNullOrEmpty(comboBoxJobTitle.Text))
+            {
+                message += "\n- Должность";
+                statusCheck = false;
+            }
+            if (string.IsNullOrEmpty(comboBoxSubDivision.Text))
+            {
+                message += "\n- Подразделение";
+                statusCheck = false;
+            }
+
+            if (!statusCheck)
+                MessageBox.Show(message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            return statusCheck;
+        }
+
+        private bool CheckJobTitles()
+        {   
+            switch(comboBoxJobTitle.Text)
+            {
+                case Constants.Supervisor:
+                    if (_mainForm.employeesTableAdapter.ScalarQueryCountEmployeesWithSameJobTitleAndSubdivision
+                        (Constants.Supervisor, comboBoxSubDivision.Text) > 0)
+                    {
+                        MessageBox.Show($"Нельзя добавить еще одного сотрудника в должности {Constants.Supervisor} " +
+                            "для выбранного отдела",
+                            "Erorr",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        return false;
+                    }
+                    break;
+                case Constants.Director:
+                    if(_mainForm.employeesTableAdapter.ScalarQueryCountEmployeesJobTitle(Constants.Director) > 0)
+                    {
+                        MessageBox.Show($"Нельзя добавить еще одного сотрудника в должности {Constants.Director}",
+                            "Erorr", 
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        return false;
+                    }
+                    break;
+            }
+
+            return true;
         }
     }
 }

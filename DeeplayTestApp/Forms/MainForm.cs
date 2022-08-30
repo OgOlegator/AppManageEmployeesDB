@@ -7,8 +7,8 @@ namespace DeeplayTestApp.Forms
 {
     public partial class MainForm : Form
     {
-        private JobTitleDirectory _directoryJobTitles;
-        private SubDivisionDirectory _directorySubDivision;
+        public JobTitleDirectory DirectoryJobTitles;
+        public SubDivisionDirectory DirectorySubDivision;
 
         public MainForm()
         {
@@ -21,11 +21,11 @@ namespace DeeplayTestApp.Forms
             employeesTableAdapter.Fill(employeesDataSet.Employees);
 
             //Заполнение значений выпадающих списков из справочников
-            _directoryJobTitles = new JobTitleDirectory();
-            _directorySubDivision = new SubDivisionDirectory();
+            DirectoryJobTitles = new JobTitleDirectory();
+            DirectorySubDivision = new SubDivisionDirectory();
 
-            var listJobTitles = _directoryJobTitles.GetJobTitles();
-            var listSubDivisions = _directorySubDivision.GetSubDivisions();
+            var listJobTitles = DirectoryJobTitles.GetJobTitles();
+            var listSubDivisions = DirectorySubDivision.GetSubDivisions();
 
             listJobTitles.Add(Constants.FilterAllValues);
             listSubDivisions.Add(Constants.FilterAllValues);

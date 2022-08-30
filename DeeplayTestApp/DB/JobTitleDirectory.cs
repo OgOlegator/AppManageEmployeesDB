@@ -43,7 +43,7 @@ namespace DeeplayTestApp.DB
 
             foreach (DataRow jobTitle in jobTitleDbData.Rows)
             {
-                _directoryJobTitles.Add(new StrucJobTitle { Name = jobTitle.ItemArray[0].ToString() });
+                _directoryJobTitles.Add(new StrucJobTitle { Name = jobTitle.ItemArray[0].ToString(), Level = int.Parse(jobTitle.ItemArray[1].ToString()) });
             }
         }
     }
