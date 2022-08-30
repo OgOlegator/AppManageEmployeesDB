@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DeeplayTestApp.DB;
 
-namespace DeeplayTestApp
+namespace DeeplayTestApp.Forms
 {
     public partial class AddForm : Form
     {

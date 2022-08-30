@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace DeeplayTestApp
+namespace DeeplayTestApp.Forms
 {
     public partial class MainForm
     {

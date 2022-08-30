@@ -1,6 +1,6 @@
 ﻿using DeeplayTestApp.DB;
 
-namespace DeeplayTestApp
+namespace DeeplayTestApp.Forms
 {
     partial class MainForm
     {
