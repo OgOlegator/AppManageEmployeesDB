@@ -1736,7 +1736,7 @@ namespace DeeplayTestApp.DB.employeesDataSetTableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [Employees] ([Name], [Birthday], [Sex], [JobTitle], [Subdivision]) VALUES (@Name, @Birthday, @Sex, @JobTitle, @Subdivision);
-SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE JobTitle WHEN N'Руководитель' THEN Subdivision WHEN N'Рабочий' THEN '' ELSE '' END AS AdditionalInfo FROM Employees WHERE (Id = SCOPE_IDENTITY())";
+SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE JobTitle WHEN N'Руководитель' THEN Subdivision WHEN N'Рабочий' THEN (SELECT Name FROM Employees AS Employees2 WHERE JobTitle = N'Руководитель' AND Employees2.Subdivision = Employees.Subdivision) ELSE '' END AS AdditionalInfo FROM Employees WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Birthday", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthday", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1746,7 +1746,7 @@ SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE JobTitle WHEN N'Ру
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE [Employees] SET [Name] = @Name, [Birthday] = @Birthday, [Sex] = @Sex, [JobTitle] = @JobTitle, [Subdivision] = @Subdivision WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ((@IsNull_Birthday = 1 AND [Birthday] IS NULL) OR ([Birthday] = @Original_Birthday)) AND ((@IsNull_Sex = 1 AND [Sex] IS NULL) OR ([Sex] = @Original_Sex)) AND ([JobTitle] = @Original_JobTitle) AND ((@IsNull_Subdivision = 1 AND [Subdivision] IS NULL) OR ([Subdivision] = @Original_Subdivision)));
-SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE JobTitle WHEN N'Руководитель' THEN Subdivision WHEN N'Рабочий' THEN '' ELSE '' END AS AdditionalInfo FROM Employees WHERE (Id = @Id)";
+SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE JobTitle WHEN N'Руководитель' THEN Subdivision WHEN N'Рабочий' THEN (SELECT Name FROM Employees AS Employees2 WHERE JobTitle = N'Руководитель' AND Employees2.Subdivision = Employees.Subdivision) ELSE '' END AS AdditionalInfo FROM Employees WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Birthday", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthday", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1778,9 +1778,11 @@ SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE JobTitle WHEN N'Ру
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE JobTitle WHEN N\'Руков" +
-                "одитель\' THEN Subdivision WHEN N\'Рабочий\' THEN \'\' ELSE \'\' END AS AdditionalInfo\r" +
-                "\nFROM     Employees";
+            this._commandCollection[0].CommandText = @"SELECT Id, Name, Birthday, Sex, JobTitle, Subdivision, CASE JobTitle WHEN N'Руководитель' THEN Subdivision WHEN N'Рабочий' THEN
+                      (SELECT Name
+                       FROM      Employees AS Employees2
+                       WHERE   JobTitle = N'Руководитель' AND Employees2.Subdivision = Employees.Subdivision) ELSE '' END AS AdditionalInfo
+FROM     Employees";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
