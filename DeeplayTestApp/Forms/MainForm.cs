@@ -66,5 +66,9 @@ namespace DeeplayTestApp.Forms
             comboBoxSubDivision.Text = string.Empty;
             employeesTableAdapter.Fill(employeesDataSet.Employees);
         }
+
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+            => new ProfileEmployeeForm(this);
+        
     }
 }
