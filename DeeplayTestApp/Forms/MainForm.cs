@@ -68,7 +68,12 @@ namespace DeeplayTestApp.Forms
         }
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-            => new ProfileEmployeeForm(this);
+        {
+            new ProfileEmployeeForm(this);
+
+            //Учитываем, что сотрудника могли повысить
+            employeesTableAdapter.Fill(employeesDataSet.Employees);
+        }
         
     }
 }
