@@ -186,6 +186,7 @@ namespace DeeplayTestApp.Forms
             // AddButton
             // 
             this.AddButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.AddButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.AddButton.Location = new System.Drawing.Point(282, 456);
             this.AddButton.Margin = new System.Windows.Forms.Padding(4);
             this.AddButton.Name = "AddButton";
@@ -198,6 +199,7 @@ namespace DeeplayTestApp.Forms
             // ChangeButton
             // 
             this.ChangeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.ChangeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.ChangeButton.Location = new System.Drawing.Point(508, 456);
             this.ChangeButton.Margin = new System.Windows.Forms.Padding(4);
             this.ChangeButton.Name = "ChangeButton";
@@ -210,6 +212,7 @@ namespace DeeplayTestApp.Forms
             // DeleteButton
             // 
             this.DeleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.DeleteButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.DeleteButton.Location = new System.Drawing.Point(734, 456);
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(4);
             this.DeleteButton.Name = "DeleteButton";
@@ -283,6 +286,7 @@ namespace DeeplayTestApp.Forms
             this.label3.Size = new System.Drawing.Size(92, 20);
             this.label3.TabIndex = 8;
             this.label3.Text = "Фильтры:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // StartFilterButton
             // 
@@ -299,6 +303,7 @@ namespace DeeplayTestApp.Forms
             // ClearFilterButton
             // 
             this.ClearFilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClearFilterButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.ClearFilterButton.Location = new System.Drawing.Point(1115, 30);
             this.ClearFilterButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ClearFilterButton.Name = "ClearFilterButton";
@@ -312,6 +317,7 @@ namespace DeeplayTestApp.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(1306, 514);
             this.Controls.Add(this.ClearFilterButton);
             this.Controls.Add(this.StartFilterButton);
