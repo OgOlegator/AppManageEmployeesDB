@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DeeplayTestApp.DB;
+using DeeplayTestApp.DB.employeesDataSetTableAdapters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,8 @@ namespace DeeplayTestApp.Forms
 {
     public partial class AuthorizationForm : Form
     {
+        private UsersTableAdapter _usersTableAdapter = new UsersTableAdapter();
+
         public AuthorizationForm()
         {
             InitializeComponent();
@@ -22,6 +26,23 @@ namespace DeeplayTestApp.Forms
             var loginString = LoginTextBox.Text;
             var passwordString = PasswordTextBox.Text;
 
+            if (string.IsNullOrEmpty(loginString) || string.IsNullOrEmpty(passwordString))
+            {
+                MessageBox.Show("Не заполнен логин или пароль");
+                return;
+            }
+
+            var dataProfile = _usersTableAdapter.GetData(loginString, passwordString);
+
+            if (dataProfile.Rows.Count <= 0)
+            {
+                MessageBox.Show("Не удалось войти");
+                return;
+            }
+
+            Close();
+
+            new MainForm();
         }
     }
 }
