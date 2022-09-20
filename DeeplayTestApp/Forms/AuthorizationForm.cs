@@ -32,9 +32,15 @@ namespace DeeplayTestApp.Forms
                 return;
             }
 
-            var dataProfile = _usersTableAdapter.GetData(loginString, passwordString);
+            try
+            {
+                var dataProfile = _usersTableAdapter.GetData(loginString, passwordString);
 
-            if (dataProfile.Rows.Count <= 0)
+                if (dataProfile.Rows.Count <= 0)
+                    throw new Exception();
+                
+            }
+            catch
             {
                 MessageBox.Show("Не удалось войти");
                 return;
