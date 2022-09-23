@@ -50,5 +50,13 @@ namespace DeeplayTestApp.Forms
 
             new MainForm();
         }
+
+        private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShowPassword.Checked)
+                PasswordTextBox.PasswordChar = '\0';
+            else if (!checkBoxShowPassword.Checked)
+                PasswordTextBox.PasswordChar = '•';
+        }
     }
 }

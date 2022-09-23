@@ -34,13 +34,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.LoginTextBox = new System.Windows.Forms.TextBox();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
+            this.checkBoxShowPassword = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // LoginButton
             // 
             this.LoginButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LoginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LoginButton.Location = new System.Drawing.Point(399, 95);
+            this.LoginButton.Location = new System.Drawing.Point(467, 111);
             this.LoginButton.Margin = new System.Windows.Forms.Padding(4);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(160, 31);
@@ -82,7 +83,7 @@
             this.LoginTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.LoginTextBox.MaxLength = 50;
             this.LoginTextBox.Name = "LoginTextBox";
-            this.LoginTextBox.Size = new System.Drawing.Size(439, 27);
+            this.LoginTextBox.Size = new System.Drawing.Size(507, 27);
             this.LoginTextBox.TabIndex = 3;
             // 
             // PasswordTextBox
@@ -96,16 +97,28 @@
             this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.PasswordTextBox.MaxLength = 20;
             this.PasswordTextBox.Name = "PasswordTextBox";
-            this.PasswordTextBox.PasswordChar = '*';
-            this.PasswordTextBox.Size = new System.Drawing.Size(439, 27);
+            this.PasswordTextBox.PasswordChar = '•';
+            this.PasswordTextBox.Size = new System.Drawing.Size(507, 27);
             this.PasswordTextBox.TabIndex = 4;
+            // 
+            // checkBoxShowPassword
+            // 
+            this.checkBoxShowPassword.AutoSize = true;
+            this.checkBoxShowPassword.Location = new System.Drawing.Point(120, 91);
+            this.checkBoxShowPassword.Name = "checkBoxShowPassword";
+            this.checkBoxShowPassword.Size = new System.Drawing.Size(177, 24);
+            this.checkBoxShowPassword.TabIndex = 5;
+            this.checkBoxShowPassword.Text = "Показать пароль";
+            this.checkBoxShowPassword.UseVisualStyleBackColor = true;
+            this.checkBoxShowPassword.CheckedChanged += new System.EventHandler(this.checkBoxShowPassword_CheckedChanged);
             // 
             // AuthorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(584, 139);
+            this.ClientSize = new System.Drawing.Size(652, 155);
+            this.Controls.Add(this.checkBoxShowPassword);
             this.Controls.Add(this.PasswordTextBox);
             this.Controls.Add(this.LoginTextBox);
             this.Controls.Add(this.label2);
@@ -128,5 +141,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox LoginTextBox;
         private System.Windows.Forms.TextBox PasswordTextBox;
+        private System.Windows.Forms.CheckBox checkBoxShowPassword;
     }
 }
