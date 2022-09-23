@@ -46,9 +46,9 @@ namespace DeeplayTestApp.Forms
                 return;
             }
 
-            Close();
+            Hide();
 
-            new MainForm();
+            new MainForm().Show();
         }
 
         private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)

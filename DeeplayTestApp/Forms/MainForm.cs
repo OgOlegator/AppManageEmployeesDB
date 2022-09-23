@@ -74,6 +74,10 @@ namespace DeeplayTestApp.Forms
             //Учитываем, что сотрудника могли повысить
             employeesTableAdapter.Fill(employeesDataSet.Employees);
         }
-        
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); 
+        }
     }
 }
